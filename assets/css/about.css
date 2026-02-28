@@ -1,0 +1,203 @@
+/* ================================================================
+   GLT ABOUT SECTION - TRADITIONAL PRO
+   ================================================================ */
+
+.glt-about {
+    padding: 120px 0;
+    background: #ffffff;
+}
+
+.glt-about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+/* 1. VISUAL SIDE */
+.glt-about-visual {
+    position: relative;
+    padding-right: 40px;
+}
+
+.glt-image-stack {
+    position: relative;
+}
+
+.glt-img-frame {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    box-shadow: 30px 30px 0px -10px #f1f5f9; /* Architectural shadow */
+}
+
+.glt-about-img {
+    width: 100%;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.glt-image-stack:hover .glt-about-img {
+    transform: scale(1.05);
+}
+
+.glt-experience-badge {
+    position: absolute;
+    bottom: -30px;
+    right: -20px;
+    z-index: 10;
+    background: #0ea5e9;
+    color: #ffffff;
+    padding: 30px;
+}
+
+.glt-badge-num {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.glt-badge-txt {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+/* Deco Elements */
+.glt-shape-deco-dots {
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    width: 150px;
+    height: 150px;
+    background-image: radial-gradient(#cbd5e1 2px, transparent 2px);
+    background-size: 15px 15px;
+    z-index: 1;
+}
+
+/* 2. TEXT SIDE */
+.glt-label-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.glt-upper-title {
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #64748b;
+}
+
+.glt-title-line {
+    height: 2px;
+    width: 50px;
+    background: #0ea5e9;
+}
+
+.glt-section-title {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #0f172a;
+    margin-bottom: 30px;
+}
+
+.glt-text-blue {
+    color: #0ea5e9;
+}
+
+.glt-lead {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #475569;
+    margin-bottom: 40px;
+}
+
+/* Features List */
+.glt-about-features {
+    margin-bottom: 50px;
+}
+
+.glt-feat-item {
+	display: flex;
+	gap: 25px;
+	margin-bottom: 0;
+	border: 1px solid #ddd;
+}
+.glt-about-cta a:hover {
+	background-color: #333;
+	color: #fff;
+}
+.glt-feat-icon {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0ea5e9;
+    transition: 0.3s;
+}
+
+.glt-feat-item:hover .glt-feat-icon {
+    background: #0ea5e9;
+    color: #ffffff;
+}
+
+.glt-feat-content h4 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.glt-feat-content p {
+    font-size: 0.95rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* Button Styling (Same as Hero) */
+.glt-btn-trad-primary {
+    display: inline-block;
+    background: #0f172a;
+    color: #ffffff;
+    padding: 18px 35px;
+    text-decoration: none;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.glt-btn-trad-primary:hover {
+    background: #0ea5e9;
+    transform: translateY(-3px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .glt-about-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+    .glt-about-visual {
+        padding-right: 0;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    .glt-section-title {
+        font-size: 2.2rem;
+    }
+}

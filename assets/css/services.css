@@ -1,0 +1,95 @@
+/* Grid & Section Spacing */
+.glt-section { padding: 100px 0; }
+.glt-products-section { background: #f8fafc; }
+.glt-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+
+/* Product Cards */
+.glt-prod-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.glt-prod-card:hover {
+    box-shadow: 0 40px 80px rgba(15, 23, 42, 0.1);
+    transform: translateY(-10px);
+}
+
+.glt-prod-img {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.glt-prod-img img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.glt-prod-card:hover .glt-prod-img img { transform: scale(1.1); }
+
+.glt-prod-status {
+    position: absolute; top: 15px; left: 15px;
+    background: #0ea5e9; color: #fff;
+    padding: 6px 12px; font-size: 0.65rem; font-weight: 800;
+    letter-spacing: 1px; border-radius: 3px;
+}
+
+.glt-prod-info { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
+
+.glt-cat-tag { font-size: 0.7rem; color: #94a3b8; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
+.glt-prod-info h3 { font-size: 1.6rem; color: #0f172a; margin-bottom: 12px; font-weight: 800; }
+.glt-prod-info p { font-size: 0.95rem; color: #64748b; line-height: 1.6; margin-bottom: 25px; }
+
+/* Technical Spec Rows */
+.glt-spec-row {
+    display: flex; justify-content: space-between;
+    padding: 12px 0; border-bottom: 1px dashed #e2e8f0;
+}
+.glt-spec-row span { font-size: 0.8rem; color: #94a3b8; font-weight: 600; }
+.glt-spec-row strong { font-size: 0.85rem; color: #0f172a; font-weight: 700; }
+
+.glt-btn-full {
+    background: #0f172a; color: #fff; text-align: center;
+    padding: 16px; text-decoration: none; font-weight: 800;
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+    margin-top: 30px; transition: 0.3s;
+}
+
+.glt-btn-full:hover { background: #0ea5e9; }
+
+/* Technical Table Section */
+.glt-bg-dark { background: #0f172a; color: #fff; }
+.glt-section-header.light p { color: #94a3b8; }
+.glt-table-responsive { overflow-x: auto; margin-top: 50px; }
+
+.glt-pro-table {
+    width: 100%; border-collapse: collapse; min-width: 850px;
+    background: rgba(255,255,255,0.02);
+}
+
+.glt-pro-table th {
+    background: rgba(255,255,255,0.05); padding: 25px;
+    text-align: left; color: #0ea5e9; font-size: 0.8rem;
+    text-transform: uppercase; border-bottom: 2px solid #0ea5e9;
+}
+
+.glt-pro-table td {
+    padding: 22px 25px; border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.95rem;
+}
+
+.glt-pro-table tr:hover td { background: rgba(14, 165, 233, 0.05); }
+
+/* Quality Icons */
+.glt-grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; text-align: center; }
+.glt-q-icon { font-size: 3rem; color: #0ea5e9; margin-bottom: 20px; }
+.glt-quality-item h4 { font-weight: 800; margin-bottom: 10px; color: #0f172a; }
+.glt-quality-item p { font-size: 0.9rem; color: #64748b; }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .glt-page-title { font-size: 2.5rem; }
+}

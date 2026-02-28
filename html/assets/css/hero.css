@@ -1,0 +1,208 @@
+/* ================================================================
+   GLT HERO - TRADITIONAL PRO (DIRECT COLOR IMPLEMENTATION)
+   ================================================================ */
+
+.glt-hero-trad-pro {
+    padding: 50px 0;
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #0f172a;
+    background-image: url('../img/banner.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow: hidden;
+    z-index: 9;
+}
+.glt-hero-trad-pro::before {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: #333;
+	left: 0;
+	top: 0;
+	opacity: .7;
+}
+
+/* 1. LAYERED OVERLAYS */
+.glt-overlay-gradient {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90deg, 
+                rgba(15, 23, 42, 0.98) 0%, 
+                rgba(15, 23, 42, 0.85) 40%, 
+                rgba(15, 23, 42, 0.4) 100%);
+    z-index: 1;
+}
+
+.glt-shaft-texture {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: radial-gradient(rgba(255,255,255,0.05) 1.5px, transparent 1.5px);
+    background-size: 50px 50px;
+    z-index: 2;
+}
+
+/* 2. TYPOGRAPHY & CONTENT */
+.glt-hero-inner {
+	position: relative;
+	z-index: 10;
+	padding: 60px 0;
+	text-align: center;
+}
+
+.glt-hero-top {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	margin-bottom: 30px;
+	justify-content: center;
+}
+.glt-trad-meta {
+	color: #fff;
+}
+.glt-trad-badge {
+    background: #0ea5e9;
+    color: #ffffff;
+    padding: 8px 18px;
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+}
+
+.glt-hero-h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    font-weight: 800;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    letter-spacing: -1px;
+}
+
+.glt-hero-focus {
+    color: #0ea5e9;
+}
+
+.glt-hero-p {
+	font-size: 1.15rem;
+	line-height: 1.8;
+	color: #fff;
+	margin-bottom: 45px;
+	padding-left: 25px;
+	margin: 0 auto 45px;
+}
+
+/* 3. BUTTONS (Sharp & Industrial) */
+.glt-hero-cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.glt-btn-trad-primary, 
+.glt-btn-trad-outline {
+    padding: 20px 40px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: inline-block;
+}
+
+.glt-btn-trad-primary {
+    background: #0ea5e9;
+    color: #ffffff;
+}
+
+.glt-btn-trad-primary:hover {
+    background: #ffffff;
+    color: #0f172a;
+    transform: translateY(-3px);
+}
+
+.glt-btn-trad-outline {
+    border: 2px solid #ffffff;
+    color: #ffffff;
+}
+
+.glt-btn-trad-outline:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: #0ea5e9;
+    color: #0ea5e9;
+}
+
+/* 4. TECHNICAL STATS */
+.glt-hero-stats {
+    display: flex;
+    gap: 60px;
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    justify-content: center;
+}
+
+.glt-stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.glt-stat-num {
+	font-size: 50px;
+	font-weight: 900;
+	color: #fff;
+	margin-bottom: 5px;
+}
+
+.glt-stat-label {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+}
+
+/* 5. VISUAL SHAFT ANIMATION */
+.glt-lift-line {
+    position: absolute;
+    right: 15%;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: rgba(255,255,255,0.1);
+    z-index: 2;
+}
+
+.glt-lift-car-dot {
+    position: absolute;
+    top: 20%;
+    left: -4px;
+    width: 10px;
+    height: 10px;
+    background: #0ea5e9;
+    border-radius: 50%;
+    box-shadow: 0 0 15px #0ea5e9;
+    animation: liftTravel 8s infinite ease-in-out;
+}
+
+@keyframes liftTravel {
+    0%, 100% { top: 15%; }
+    50% { top: 85%; }
+}
+
+/* 6. RESPONSIVENESS */
+@media (max-width: 992px) {
+    .glt-hero-inner { text-align: center; }
+    .glt-hero-p { margin: 0 auto 40px; border-left: none; padding-left: 0; }
+    .glt-hero-cta-group { justify-content: center; }
+    .glt-hero-stats { justify-content: center; gap: 30px; }
+    .glt-lift-line { display: none; }
+}
