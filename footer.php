@@ -11,30 +11,7 @@
 
 ?>
 
-	<footer class="glt-footer">
-    <div class="glt-trust-bar">
-        <div class="glt-container">
-            <div class="glt-trust-flex">
-                <div class="glt-trust-item">
-                    <span class="glt-status-pulse"></span> 
-                    SYSTEM STATUS: OPTIMAL
-                </div>
-                <div class="glt-trust-item">
-                    <i class="fa-solid fa-microchip"></i> 
-                    AI-DRIVE ACTIVE
-                </div>
-                <div class="glt-trust-item">
-                    <i class="fa-solid fa-shield-check"></i> 
-                    SAFETY GRADE: AAA
-                </div>
-                <div class="glt-trust-item">
-                    <i class="fa-solid fa-satellite-dish"></i> 
-                    GLOBAL TELEMETRY ON
-                </div>
-            </div>
-        </div>
-    </div>
-
+<footer class="glt-footer">
     <div class="glt-container">
         <div class="glt-footer-main">
             <div class="glt-footer-col">
@@ -50,24 +27,28 @@
             </div>
 
             <div class="glt-footer-col">
-                <h4 class="glt-col-title">Vertical Solutions</h4>
-                <ul class="glt-link-list">
-                    <li><a href="#">SkyRise™ Commercial</a></li>
-                    <li><a href="#">Eco-Space™ Residential</a></li>
-                    <li><a href="#">Industrial Freight</a></li>
-                    <li><a href="#">Modernization Kits</a></li>
-                </ul>
-            </div>
+    <h4 class="glt-col-title">Important Links</h4>
+    <?php
+    wp_nav_menu( array(
+        'theme_location' => 'footer-1',
+        'container'      => false,
+        'items_wrap'     => '<ul class="glt-link-list">%3$s</ul>',
+        'fallback_cb'    => false,
+    ) );
+    ?>
+</div>
 
-            <div class="glt-footer-col">
-                <h4 class="glt-col-title">Engineering</h4>
-                <ul class="glt-link-list">
-                    <li><a href="#">Safety Protocols</a></li>
-                    <li><a href="#">BIM & CAD Files</a></li>
-                    <li><a href="#">Maintenance Portal</a></li>
-                    <li><a href="#">IoT Monitoring</a></li>
-                </ul>
-            </div>
+<div class="glt-footer-col">
+    <h4 class="glt-col-title">Quick Links</h4>
+    <?php
+    wp_nav_menu( array(
+        'theme_location' => 'footer-2',
+        'container'      => false,
+        'items_wrap'     => '<ul class="glt-link-list">%3$s</ul>',
+        'fallback_cb'    => false,
+    ) );
+    ?>
+</div>
 
             <div class="glt-footer-col">
                 <h4 class="glt-col-title">Global HQ</h4>
@@ -84,14 +65,33 @@
 
         <div class="glt-footer-bottom">
             <div class="glt-bottom-inner">
-                <p class="glt-copy">&copy; 2026 GLT Elevate International. Precision Engineered.</p>
-                <div class="glt-legal">
-                    <a href="#">Privacy Policy</a>
-                    <span class="glt-sep">|</span>
-                    <a href="#">Terms of Service</a>
-                    <span class="glt-sep">|</span>
-                    <a href="#">Sitemap</a>
-                </div>
+                <p class="glt-copy">&copy; 2026 Design & Developed by <a href="https://infinityflamesoft.com/" target="_blank">Infinity Flame Soft</a>.</p>
+                <div class="footer-bottom-links">
+    <div class="glt-legal">
+    <?php
+    $menu_name = 'footer-3'; // The theme_location ID
+    $locations = get_nav_menu_locations();
+    
+    if (isset($locations[$menu_name])) {
+        $menu = wp_get_nav_menu_object($locations[$menu_name]);
+        $menu_items = wp_get_nav_menu_items($menu->term_id);
+
+        $count = 0;
+        $total = count($menu_items);
+
+        foreach ($menu_items as $item) {
+            $count++;
+            echo '<a href="' . esc_url($item->url) . '">' . esc_html($item->title) . '</a>';
+            
+            // Add the separator ONLY if it's NOT the last item
+            if ($count < $total) {
+                echo '<span class="glt-sep">|</span>';
+            }
+        }
+    }
+    ?>
+</div>
+</div>
             </div>
         </div>
     </div>

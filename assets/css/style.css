@@ -120,25 +120,6 @@ a { text-decoration: none; color: inherit; transition: var(--glt-transition); }
 
 .glt-social-minimal a:hover { color: #0ea5e9; }
 
-.glt-ticker {
-    border-left: 1px solid #cbd5e1;
-    padding-left: 20px;
-    letter-spacing: 1px;
-    color: #64748b;
-}
-
-.glt-status-tag {
-    background: #ffffff;
-    padding: 4px 12px;
-    border-radius: 50px;
-    border: 1px solid #e2e8f0;
-    color: #0f172a;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-weight: 800;
-}
-
 .glt-dot {
     width: 6px; height: 6px;
     background: #22c55e;
@@ -1326,41 +1307,6 @@ a { text-decoration: none; color: inherit; transition: var(--glt-transition); }
     color: #94a3b8;
     padding: 0;
     font-family: 'Inter', sans-serif;
-}
-
-/* 1. Trust Bar Overlay */
-.glt-trust-bar {
-    background: rgba(15, 23, 42, 0.4);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(14, 165, 233, 0.1);
-    padding: 15px 0;
-}
-
-.glt-trust-flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.glt-trust-item {
-    font-size: 0.65rem;
-    font-weight: 800;
-    letter-spacing: 0.15em;
-    color: #f8fafc;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.glt-status-pulse {
-    width: 8px;
-    height: 8px;
-    background: #10b981; /* Green status */
-    border-radius: 50%;
-    box-shadow: 0 0 10px #10b981;
-    animation: gltPulse 1.5s infinite;
 }
 
 /* 2. Main Grid Layout */

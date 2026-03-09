@@ -34,12 +34,10 @@
                 <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
                 <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
             </div>
-            <span class="glt-ticker">GLOBAL SAFETY RATING: 99.9%</span>
         </div>
         <div class="glt-topbar-right">
             <a href="tel:18005554583" class="glt-top-info"><i class="fa-solid fa-phone"></i> +88 01621 222 255</a>
             <span class="glt-top-info glt-hide-mobile"><i class="fa-solid fa-envelope"></i> info@generalliftbd.com</span>
-            <span class="glt-status-tag"><span class="glt-dot"></span> 24/7 EMERGENCY</span>
         </div>
     </div>
 </div>
