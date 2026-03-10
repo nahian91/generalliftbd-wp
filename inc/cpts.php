@@ -63,7 +63,7 @@ function glt_register_all_cpt_features() {
             'all_items'     => 'All Services',
         ],
         'public'             => true,
-        'has_archive'        => true,
+        'has_archive'        => false,
         'menu_icon'          => 'dashicons-hammer',
         'supports'           => ['title'],
         'show_in_rest'       => false,
@@ -115,7 +115,7 @@ function glt_register_all_cpt_features() {
     register_post_type('gallery', [
         'labels' => ['name' => 'Gallery', 'singular_name' => 'Gallery Item', 'add_new_item' => 'Add New Gallery Item'],
         'public'      => true,
-        'has_archive' => true,
+        'has_archive' => false,
         'menu_icon'   => 'dashicons-format-gallery',
         'supports'    => ['title', 'editor', 'thumbnail'],
         'show_in_rest' => true,
