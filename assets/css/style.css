@@ -3210,3 +3210,6 @@ a { text-decoration: none; color: inherit; transition: var(--glt-transition); }
 @media (max-width: 768px) {
     .glt-page-title { font-size: 2.5rem; }
 }
+.glt-contact-info-column .glt-section-title {
+	font-size: 30px;
+}

@@ -30,14 +30,13 @@
     <div class="glt-container glt-topbar-flex">
         <div class="glt-topbar-left">
             <div class="glt-social-minimal">
-                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.facebook.com/generallifttech" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://youtube.com/@generallifttechnology7321?si=xW_QyAyBkJnM8Mli" target="_blank"><i class="fa-brands fa-youtube"></i></a>
             </div>
         </div>
         <div class="glt-topbar-right">
             <a href="tel:18005554583" class="glt-top-info"><i class="fa-solid fa-phone"></i> +88 01621 222 255</a>
-            <span class="glt-top-info glt-hide-mobile"><i class="fa-solid fa-envelope"></i> info@generalliftbd.com</span>
+            <span class="glt-top-info glt-hide-mobile"><i class="fa-solid fa-envelope"></i> generallifttechnology@gmail.com</span>
         </div>
     </div>
 </div>

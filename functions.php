@@ -252,3 +252,25 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 }
 
 require get_template_directory() . '/inc/cpts.php';
+
+/**
+ * 1. Define the Save Point for ACF JSON
+ */
+add_filter('acf/settings/save_json', 'custom_acf_json_save_point');
+function custom_acf_json_save_point( $path ) {
+    // Update path to your theme's acf-json folder
+    $path = get_stylesheet_directory() . '/acf-json'; // Adjust folder path as needed
+    return $path;
+}
+
+/**
+ * 2. Define the Load Point for ACF JSON
+ */
+add_filter('acf/settings/load_json', 'custom_acf_json_load_point');
+function custom_acf_json_load_point( $paths ) {
+    // Remove original path (optional)
+    unset($paths[0]);
+    // Append our custom path
+    $paths[] = get_stylesheet_directory() . '/acf-json';
+    return $paths;
+}

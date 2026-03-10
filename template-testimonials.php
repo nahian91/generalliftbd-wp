@@ -28,18 +28,12 @@ get_header(); ?>
 
 <section class="glt-testimonials glt-section">
     <div class="glt-container">
-        
-        <div class="glt-center-header">
-            <span class="glt-upper-title">Client Validation</span>
-            <h2 class="glt-section-title">Performance <span class="glt-text-blue">Reports</span></h2>
-            <div class="glt-header-line"></div>
-        </div>
 
         <div class="glt-grid-3">
             <?php 
             $args = array(
                 'post_type'      => 'testimonial',
-                'posts_per_page' => -1, // Shows all testimonials
+                'posts_per_page' => -1,
                 'orderby'        => 'date',
                 'order'          => 'DESC'
             );
@@ -48,37 +42,36 @@ get_header(); ?>
             if ( $testi_query->have_posts() ) : 
                 while ( $testi_query->have_posts() ) : $testi_query->the_post(); 
                     
-                    // Fetching Custom Meta Data
-                    $data_val   = get_post_meta(get_the_ID(), 'testimonial_data_val', true); // e.g., -22%
-                    $data_label = get_post_meta(get_the_ID(), 'testimonial_data_label', true); // e.g., Energy Overhead
-                    $client_role = get_post_meta(get_the_ID(), 'testimonial_client_role', true); // e.g., Director, Grand Plaza
+                    // Mapping to your ACF JSON Keys
+                    $speech      = get_field('client_speech');
+                    $name        = get_field('client_name');
+                    $designation = get_field('client_designation');
+                    
+                    // Fallbacks: Use title/content if ACF is empty
+                    $display_name = $name ? $name : get_the_title();
+                    $display_text = $speech ? $speech : get_the_content();
                 ?>
             
                 <div class="glt-testi-card-trad">
-                    <?php if($data_val): ?>
-                    <div class="glt-testi-data">
-                        <span class="glt-data-val"><?php echo esc_html($data_val); ?></span>
-                        <span class="glt-data-label"><?php echo esc_html($data_label); ?></span>
-                    </div>
-                    <?php endif; ?>
-
                     <div class="glt-testi-content">
                         <svg class="glt-quote-svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2">
                             <path d="M3 21c3 0 7-1 7-8V5H3v8h4c0 5-4 6-4 6zM14 21c3 0 7-1 7-8V5h-7v8h4c0 5-4 6-4 6z"/>
                         </svg>
-                        <blockquote>"<?php echo get_the_content(); ?>"</blockquote>
+                        <blockquote><?php echo $display_text; ?></blockquote>
                     </div>
 
                     <div class="glt-testi-footer">
                         <?php if ( has_post_thumbnail() ) : ?>
                             <?php the_post_thumbnail('thumbnail', ['class' => 'glt-testi-avatar']); ?>
                         <?php else : ?>
-                            <img src="https://i.pravatar.cc/100?u=<?php the_ID(); ?>" alt="<?php the_title(); ?>" class="glt-testi-avatar">
+                            <img src="https://i.pravatar.cc/100?u=<?php the_ID(); ?>" alt="<?php echo esc_attr($display_name); ?>" class="glt-testi-avatar">
                         <?php endif; ?>
 
                         <div class="glt-testi-meta">
-                            <strong><?php the_title(); ?></strong>
-                            <span><?php echo esc_html($client_role); ?></span>
+                            <strong><?php echo esc_html($display_name); ?></strong>
+                            <?php if($designation): ?>
+                                <span><?php echo esc_html($designation); ?></span>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

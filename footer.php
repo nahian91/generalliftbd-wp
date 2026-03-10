@@ -51,15 +51,12 @@
 </div>
 
             <div class="glt-footer-col">
-                <h4 class="glt-col-title">Global HQ</h4>
+                <h4 class="glt-col-title">Head Office</h4>
                 <address class="glt-address">
-                    <p><i class="fa-solid fa-location-dot"></i> 2/C, road 6, pallabi,dhaka1216, Dhaka  Uttar city corporation, Dhaka, Bangladesh</p>
-                    <p><i class="fa-solid fa-phone"></i> +8801621222255, 01878076355 </p>
-                    <p><i class="fa-solid fa-envelope"></i> info@generalliftbd.com</p>
+                    <p><i class="fa-solid fa-location-dot"></i> NS Tower, House No-21, Block-J, Gate-4, EXT. Pallabi, Mirpur, Dhaka.</p>
+                    <p><i class="fa-solid fa-phone"></i> 01621-222255</p>
+                    <p><i class="fa-solid fa-envelope"></i> generallifttechnology@gmail.com</p>
                 </address>
-                <div class="glt-work-hours">
-                    <span class="glt-tag-emergency">24/7 EMERGENCY DISPATCH</span>
-                </div>
             </div>
         </div>
 

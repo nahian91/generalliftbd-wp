@@ -33,16 +33,23 @@ get_header(); ?>
             <div class="glt-contact-info-column">
                 <div class="glt-info-header">
                     <span class="glt-upper-title">Contact Us</span>
-                    <h2 class="glt-section-title">Global Engineering <br><span class="glt-text-blue">Headquarters</span></h2>
-                    <p class="glt-info-desc">Reach out to our specialist teams for infrastructure consulting, maintenance protocols, or new project specifications.</p>
+                    <h4 class="glt-section-title">Contact Information</h4>
                 </div>
 
                 <div class="glt-contact-methods">
                     <div class="glt-method-card">
                         <div class="glt-method-icon"><i class="fa-solid fa-location-dot"></i></div>
                         <div class="glt-method-text">
-                            <label>Address</label>
-                            <p>2/C, Road 6, Pallabi, Dhaka 1216, <br/> Dhaka Uttar City Corporation, Bangladesh</p>
+                            <label>Dhaka Head-office</label>
+                            <p>NS Tower, House No-21, Block-J, Gate-4, EXT. Pallabi, Mirpur, Dhaka.</p>
+                        </div>
+                    </div>
+
+                    <div class="glt-method-card">
+                        <div class="glt-method-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="glt-method-text">
+                            <label>Sylhet Office</label>
+                            <p>House No-03, Road No-42, Block-C, ABC Point, Shahjalal Upashahar, Sylhet.</p>
                         </div>
                     </div>
 
@@ -50,7 +57,15 @@ get_header(); ?>
                         <div class="glt-method-icon"><i class="fa-solid fa-phone-volume"></i></div>
                         <div class="glt-method-text">
                             <label>Phone</label>
-                            <p>+8801621222255, <br/> +8801878076355 </p>
+                            <p>01726-218583 [CEO Number] <br/> 01712-256270 [Director Number] <br/> 01621-222255 [Hotline Number] </p>
+                        </div>
+                    </div>
+
+                    <div class="glt-method-card">
+                        <div class="glt-method-icon"><i class="fa-solid fa-phone-volume"></i></div>
+                        <div class="glt-method-text">
+                            <label>Hotline</label>
+                            <p> 01621-222255</p>
                         </div>
                     </div>
 
@@ -58,28 +73,14 @@ get_header(); ?>
                         <div class="glt-method-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
                         <div class="glt-method-text">
                             <label>Email</label>
-                            <p>info@generalliftbd.com</p>
+                            <p>generallifttechnology@gmail.com</p>
                         </div>
-                    </div>
-                </div>
-
-                <div class="glt-social-wrap">
-                    <label>Digital Presence</label>
-                    <div class="glt-social-links">
-                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
 
             <div class="glt-form-column">
                 <div class="glt-form-terminal-frame">
-                    <div class="glt-terminal-header">
-                        <div class="glt-status-light pulse"></div>
-                        <span class="glt-terminal-title">PROJECT_INQUIRY_PROTOCOL</span>
-                    </div>
-
                     <form class="glt-pro-form">
                         <div class="glt-pro-row">
                             <div class="glt-pro-field">
