@@ -80,8 +80,8 @@ function glt_register_all_cpt_features() {
         'public'             => false,
         'show_ui'            => true,
         'menu_icon'          => 'dashicons-testimonial',
-        'supports'           => ['title', 'editor', 'thumbnail'],
-        'show_in_rest'       => true, // Allows using blocks for quotes
+        'supports'           => ['title', 'thumbnail'],
+        'show_in_rest'       => false, // Allows using blocks for quotes
     ]);
 
     // 4. BRANDS
