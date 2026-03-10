@@ -1,9 +1,7 @@
 <?php 
-
 /*
 Template Name: Products
 */
-
 get_header(); ?>
 
 <section class="glt-page-header" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/img/breadcumb.jpg');">
@@ -14,12 +12,12 @@ get_header(); ?>
         <nav class="glt-breadcrumb-vertical">
             <div class="glt-bc-line-top"></div>
             <ul class="glt-bc-list">
-                <li class="glt-bc-item"><a href="#">Home</a></li>
+                <li class="glt-bc-item"><a href="<?php echo home_url(); ?>">Home</a></li>
                 <li class="glt-bc-item active">Products</li>
             </ul>
         </nav>
 
-        <h1 class="glt-page-title">Products</h1>
+        <h1 class="glt-page-title"><?php the_title(); ?></h1>
         <p class="glt-page-subtitle">Global headquarters and technical support infrastructure.</p>
     </div>
 </section>
@@ -27,145 +25,51 @@ get_header(); ?>
 <section id="products" class="glt-products-section glt-section">
     <div class="glt-container">
         <div class="glt-grid-3">
-            
-            <div class="glt-prod-card">
-                <div class="glt-prod-img">
-                    <img src="<?php echo get_template_directory_uri();?>/assets/img/blog-1.jpg" alt="Passenger Lift">
-                    <div class="glt-prod-status">HIGH-SPEED</div>
-                </div>
-                <div class="glt-prod-info">
-                    <span class="glt-cat-tag">Traction Technology</span>
-                    <h3>Passenger Lift</h3>
-                    <p>Gearless traction systems designed for ultra-smooth travel in luxury residential and commercial hubs.</p>
-                    <div class="glt-spec-row"><span>Load Limit</span><strong>1600 KG</strong></div>
-                    <div class="glt-spec-row"><span>Max Speed</span><strong>4.0 M/S</strong></div>
-                    <a href="#" class="glt-btn-full">Technical Specifications</a>
-                </div>
-            </div>
+            <?php
+            $args = array(
+                'post_type'      => 'product',
+                'posts_per_page' => -1,
+                'orderby'        => 'menu_order',
+                'order'          => 'ASC',
+            );
 
-            <div class="glt-prod-card">
-                <div class="glt-prod-img">
-                    <img src="<?php echo get_template_directory_uri();?>/assets/img/blog-2.jpg" alt="Hospital Lift">
-                    <div class="glt-prod-status">EN-81 COMPLIANT</div>
-                </div>
-                <div class="glt-prod-info">
-                    <span class="glt-cat-tag">Healthcare Sector</span>
-                    <h3>Hospital Lift</h3>
-                    <p>Deep-cabin stretcher elevators with micro-leveling precision and antibacterial interior finishes.</p>
-                    <div class="glt-spec-row"><span>Cabin Depth</span><strong>2400 MM</strong></div>
-                    <div class="glt-spec-row"><span>Power Mode</span><strong>Emergency Bypass</strong></div>
-                    <a href="#" class="glt-btn-full">Technical Specifications</a>
-                </div>
-            </div>
+            $products_query = new WP_Query($args);
 
-            <div class="glt-prod-card">
-                <div class="glt-prod-img">
-                    <img src="<?php echo get_template_directory_uri();?>/assets/img/blog-3.jpg" alt="Hydraulic Lift">
-                    <div class="glt-prod-status">LOW-RISE PRO</div>
-                </div>
-                <div class="glt-prod-info">
-                    <span class="glt-cat-tag">Hydraulic Drive</span>
-                    <h3>Hydraulic Lift</h3>
-                    <p>Robust low-rise solutions for restricted overhead spaces, utilizing energy-efficient oil pressure systems.</p>
-                    <div class="glt-spec-row"><span>Drive System</span><strong>Direct / Indirect</strong></div>
-                    <div class="glt-spec-row"><span>Floors</span><strong>Up to 6 Stops</strong></div>
-                    <a href="#" class="glt-btn-full">Technical Specifications</a>
-                </div>
-            </div>
+            if ($products_query->have_posts()) :
+                while ($products_query->have_posts()) : $products_query->the_post(); 
+                    
+                    // ACF Fields
+                    $badge       = get_field('product_badge');
+                    $short_desc  = get_field('product_short_description');
+                    $specs       = get_field('product_technical_specs'); // Repeater
+                    ?>
 
-            <div class="glt-prod-card">
-                <div class="glt-prod-img">
-                    <img src="<?php echo get_template_directory_uri();?>/assets/img/blog-4.jpg" alt="Car Lift">
-                    <div class="glt-prod-status">INDUSTRIAL</div>
-                </div>
-                <div class="glt-prod-info">
-                    <span class="glt-cat-tag">Automotive Logistics</span>
-                    <h3>Car Lift</h3>
-                    <p>Heavy-duty automotive elevators for parking showrooms and luxury multi-level residential garages.</p>
-                    <div class="glt-spec-row"><span>Capacity</span><strong>Up to 5,000 KG</strong></div>
-                    <div class="glt-spec-row"><span>Platform</span><strong>Reinforced Steel</strong></div>
-                    <a href="#" class="glt-btn-full">Technical Specifications</a>
-                </div>
-            </div>
+                    <div class="glt-prod-card">
+                        <div class="glt-prod-img">
+                            <?php if (has_post_thumbnail()) : ?>
+                                <?php the_post_thumbnail('large'); ?>
+                            <?php else : ?>
+                                <img src="<?php echo get_template_directory_uri();?>/assets/img/placeholder.jpg" alt="<?php the_title(); ?>">
+                            <?php endif; ?>
 
-            <div class="glt-prod-card">
-                <div class="glt-prod-img">
-                    <img src="<?php echo get_template_directory_uri();?>/assets/img/blog-5.jpg" alt="Escalator">
-                    <div class="glt-prod-status">PUBLIC TRANSIT</div>
-                </div>
-                <div class="glt-prod-info">
-                    <span class="glt-cat-tag">Continuous Flow</span>
-                    <h3>Escalator</h3>
-                    <p>Heavy-duty systems for malls and airports featuring energy-saving "Auto-Walk" sensor technology.</p>
-                    <div class="glt-spec-row"><span>Inclination</span><strong>30° / 35°</strong></div>
-                    <div class="glt-spec-row"><span>Step Width</span><strong>1000 MM</strong></div>
-                    <a href="#" class="glt-btn-full">Technical Specifications</a>
-                </div>
-            </div>
+                            <?php if ($badge) : ?>
+                                <div class="glt-prod-status"><?php echo esc_html($badge); ?></div>
+                            <?php endif; ?>
+                        </div>
 
-            <div class="glt-prod-card">
-                <div class="glt-prod-img">
-                    <img src="<?php echo get_template_directory_uri();?>/assets/img/blog-6.jpg" alt="Special Purpose Lift">
-                    <div class="glt-prod-status">CUSTOM</div>
-                </div>
-                <div class="glt-prod-info">
-                    <span class="glt-cat-tag">Architectural Art</span>
-                    <h3>Special Solutions</h3>
-                    <p>Custom panoramic glass lifts and freight platforms engineered for unique architectural footprints.</p>
-                    <div class="glt-spec-row"><span>Visuals</span><strong>360° Glass</strong></div>
-                    <div class="glt-spec-row"><span>Control</span><strong>IoT Integrated</strong></div>
-                    <a href="#" class="glt-btn-full">Technical Specifications</a>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-</section>
+                        <div class="glt-prod-info">
+                            <span class="glt-cat-tag">
+                            <h3><?php the_title(); ?></h3>
+                            <p><?php echo $short_desc ? esc_html($short_desc) : wp_trim_words(get_the_excerpt(), 15); ?></p>
 
-<section class="glt-technical-table glt-section glt-bg-dark">
-    <div class="glt-container">
-        <div class="glt-section-header light">
-            <h2 class="glt-section-title">Technical <span class="glt-text-blue">Performance Matrix</span></h2>
-            <p>Direct performance comparison of core hoisting technologies and structural limits.</p>
-        </div>
-        
-        <div class="glt-table-responsive">
-            <table class="glt-pro-table">
-                <thead>
-                    <tr>
-                        <th>Specifications</th>
-                        <th>Gearless Traction</th>
-                        <th>Hydraulic System</th>
-                        <th>Machine Room-Less (MRL)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Maximum Travel</strong></td>
-                        <td>120 Meters</td>
-                        <td>25 Meters</td>
-                        <td>75 Meters</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Energy Efficiency</strong></td>
-                        <td>Class A+++</td>
-                        <td>Class B</td>
-                        <td>Class A++</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Maintenance Frequency</strong></td>
-                        <td>Bi-Annual</td>
-                        <td>Quarterly</td>
-                        <td>Bi-Annual</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Machine Room Req.</strong></td>
-                        <td>Optional</td>
-                        <td>Mandatory</td>
-                        <td>None (Integrated)</td>
-                    </tr>
-                </tbody>
-            </table>
+                            <a href="<?php the_permalink(); ?>" class="glt-btn-full">View Details</a>
+                        </div>
+                    </div>
+
+                <?php 
+                endwhile;
+                wp_reset_postdata();
+            endif; ?>
         </div>
     </div>
 </section>

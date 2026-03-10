@@ -25,32 +25,12 @@ function glt_register_all_cpt_features() {
             'not_found_in_trash'    => 'No products found in Trash.',
         ],
         'public'             => true,
-        'has_archive'        => true,
+        'has_archive'        => false,
         'menu_icon'          => 'dashicons-cart',
         'menu_position'      => 5,
-        'supports'           => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions'],
+        'supports'           => ['title', 'thumbnail'],
         'show_in_rest'       => true,
         'rewrite'            => ['slug' => 'products'],
-    ]);
-
-    register_taxonomy('product_cat', 'product', [
-        'labels' => [
-            'name'              => 'Product Categories',
-            'singular_name'     => 'Product Category',
-            'search_items'      => 'Search Categories',
-            'all_items'         => 'All Categories',
-            'parent_item'       => 'Parent Category',
-            'parent_item_colon' => 'Parent Category:',
-            'edit_item'         => 'Edit Category',
-            'update_item'       => 'Update Category',
-            'add_new_item'      => 'Add New Product Category',
-            'menu_name'         => 'Categories',
-        ],
-        'hierarchical'      => true,
-        'show_ui'           => true,
-        'show_admin_column' => true,
-        'show_in_rest'      => true,
-        'rewrite'           => ['slug' => 'product-category'],
     ]);
 
     // 2. SERVICES
