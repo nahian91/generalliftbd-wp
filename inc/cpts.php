@@ -65,8 +65,8 @@ function glt_register_all_cpt_features() {
         'public'             => true,
         'has_archive'        => true,
         'menu_icon'          => 'dashicons-hammer',
-        'supports'           => ['title', 'editor', 'thumbnail', 'excerpt'],
-        'show_in_rest'       => true,
+        'supports'           => ['title'],
+        'show_in_rest'       => false,
         'rewrite'            => ['slug' => 'services'],
     ]);
 
@@ -90,7 +90,7 @@ function glt_register_all_cpt_features() {
         'public'      => true,
         'menu_icon'   => 'dashicons-tag',
         'supports'    => ['title', 'thumbnail'],
-        'show_in_rest' => true,
+        'show_in_rest' => false,
     ]);
 
     // 5. CLIENTS
