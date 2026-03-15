@@ -6,11 +6,29 @@
 get_header();
 ?>
 
+
+<section class="glt-page-header" style="background-image: url('<?php echo get_template_directory_uri();?>/assets/img/breadcumb.jpg');">
+    <div class="glt-bg-image"></div>
+    <div class="glt-bg-grid"></div>
+
+    <div class="glt-container glt-header-content">
+        <nav class="glt-breadcrumb-vertical">
+            <div class="glt-bc-line-top"></div>
+            <ul class="glt-bc-list">
+                <li class="glt-bc-item"><a href="#">Home</a></li>
+                <li class="glt-bc-item active">Single Post</li>
+            </ul>
+        </nav>
+
+        <h1 class="glt-page-title">Single Post</h1>
+        <p class="glt-page-subtitle">Global headquarters and technical support infrastructure.</p>
+    </div>
+</section>
 <main id="primary" class="site-main glt-section">
     <div class="glt-container">
-        <div class="glt-row">
+        <div class="glt-row-blog">
             
-            <div class="glt-grid-9">
+            <div class="glt-grid-8">
                 <?php
                 while ( have_posts() ) :
                     the_post();
@@ -18,26 +36,11 @@ get_header();
                     // This pulls from template-parts/content.php
                     get_template_part( 'template-parts/content', get_post_type() );
 
-                    echo '<hr class="glt-separator">';
-
-                    the_post_navigation(
-                        array(
-                            'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'generallift' ) . '</span> <br><span class="nav-title"><strong>%title</strong></span>',
-                            'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'generallift' ) . '</span> <br><span class="nav-title"><strong>%title</strong></span>',
-                        )
-                    );
-
-                    if ( comments_open() || get_comments_number() ) :
-                        echo '<div class="glt-comments-wrapper">';
-                        comments_template();
-                        echo '</div>';
-                    endif;
-
                 endwhile;
                 ?>
             </div>
 
-            <aside class="glt-grid-3">
+            <aside class="glt-grid-4">
                 <?php get_sidebar(); ?>
             </aside>
 

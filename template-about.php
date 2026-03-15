@@ -111,60 +111,66 @@ get_header(); ?>
         </div>
 
         <div class="glt-grid-3">
+            <?php 
+            $args = array(
+                'post_type'      => 'testimonial',
+                'posts_per_page' => 3, // Shows only the latest 3
+                'orderby'        => 'date',
+                'order'          => 'DESC'
+            );
+            $testi_query = new WP_Query($args);
+
+            if ( $testi_query->have_posts() ) : 
+                while ( $testi_query->have_posts() ) : $testi_query->the_post(); 
+                    
+                    // ACF Data Mapping
+                    $data_val    = get_field('performance_value'); // e.g., -22%
+                    $data_label  = get_field('performance_label'); // e.g., Energy Overhead
+                    $speech      = get_field('client_speech');
+                    $name        = get_field('client_name');
+                    $designation = get_field('client_designation');
+                    
+                    // Fallbacks
+                    $display_name = $name ? $name : get_the_title();
+                    $display_text = $speech ? $speech : get_the_content();
+                ?>
             
-            <div class="glt-testi-card-trad">
-                <div class="glt-testi-data">
-                    <span class="glt-data-val">-22%</span>
-                    <span class="glt-data-label">Energy Overhead</span>
-                </div>
-                <div class="glt-testi-content">
-                    <svg class="glt-quote-svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2"><path d="M3 21c3 0 7-1 7-8V5H3v8h4c0 5-4 6-4 6zM14 21c3 0 7-1 7-8V5h-7v8h4c0 5-4 6-4 6z"/></svg>
-                    <blockquote>"The Series-X installation at Grand Plaza reduced our energy overhead significantly. Their technical precision is unmatched."</blockquote>
-                </div>
-                <div class="glt-testi-footer">
-                    <img src="https://i.pravatar.cc/100?u=12" alt="Marcus Vane" class="glt-testi-avatar">
-                    <div class="glt-testi-meta">
-                        <strong>Marcus Vane</strong>
-                        <span>Director, Grand Plaza REIT</span>
+                <div class="glt-testi-card-trad">
+                    <?php if($data_val): ?>
+                    <div class="glt-testi-data">
+                        <span class="glt-data-val"><?php echo esc_html($data_val); ?></span>
+                        <span class="glt-data-label"><?php echo esc_html($data_label); ?></span>
                     </div>
-                </div>
-            </div>
+                    <?php endif; ?>
 
-            <div class="glt-testi-card-trad">
-                <div class="glt-testi-data">
-                    <span class="glt-data-val">99.9%</span>
-                    <span class="glt-data-label">System Uptime</span>
-                </div>
-                <div class="glt-testi-content">
-                    <svg class="glt-quote-svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2"><path d="M3 21c3 0 7-1 7-8V5H3v8h4c0 5-4 6-4 6zM14 21c3 0 7-1 7-8V5h-7v8h4c0 5-4 6-4 6z"/></svg>
-                    <blockquote>"Uptime is critical for our hospital infrastructure. GLT's predictive maintenance has kept us at peak operational capacity."</blockquote>
-                </div>
-                <div class="glt-testi-footer">
-                    <img src="https://i.pravatar.cc/100?u=22" alt="Sarah Jenkins" class="glt-testi-avatar">
-                    <div class="glt-testi-meta">
-                        <strong>Sarah Jenkins</strong>
-                        <span>Chief Engineer, St. Jude Med</span>
+                    <div class="glt-testi-content">
+                        <svg class="glt-quote-svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2">
+                            <path d="M3 21c3 0 7-1 7-8V5H3v8h4c0 5-4 6-4 6zM14 21c3 0 7-1 7-8V5h-7v8h4c0 5-4 6-4 6z"/>
+                        </svg>
+                        <blockquote>"<?php echo wp_strip_all_tags($display_text); ?>"</blockquote>
                     </div>
-                </div>
-            </div>
 
-            <div class="glt-testi-card-trad">
-                <div class="glt-testi-data">
-                    <span class="glt-data-val">+35%</span>
-                    <span class="glt-data-label">Traffic Flow</span>
-                </div>
-                <div class="glt-testi-content">
-                    <svg class="glt-quote-svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2"><path d="M3 21c3 0 7-1 7-8V5H3v8h4c0 5-4 6-4 6zM14 21c3 0 7-1 7-8V5h-7v8h4c0 5-4 6-4 6z"/></svg>
-                    <blockquote>"Smart dispatching logic improved our morning rush hour flow by 35%. A remarkable upgrade to our tenant experience."</blockquote>
-                </div>
-                <div class="glt-testi-footer">
-                    <img src="https://i.pravatar.cc/100?u=32" alt="David Thorne" class="glt-testi-avatar">
-                    <div class="glt-testi-meta">
-                        <strong>David Thorne</strong>
-                        <span>Manager, Apex Towers</span>
+                    <div class="glt-testi-footer">
+                        <?php if ( has_post_thumbnail() ) : ?>
+                            <?php the_post_thumbnail('thumbnail', ['class' => 'glt-testi-avatar']); ?>
+                        <?php else : ?>
+                            <img src="https://i.pravatar.cc/100?u=<?php the_ID(); ?>" alt="<?php echo esc_attr($display_name); ?>" class="glt-testi-avatar">
+                        <?php endif; ?>
+
+                        <div class="glt-testi-meta">
+                            <strong style="color: #ffffff;"><?php echo esc_html($display_name); ?></strong>
+                            <span style="color: #94a3b8;"><?php echo esc_html($designation); ?></span>
+                        </div>
                     </div>
                 </div>
-            </div>
+
+            <?php 
+                endwhile; 
+                wp_reset_postdata(); 
+            else : 
+                echo '<p style="color: #ffffff; text-align: center;">No reports available at this time.</p>';
+            endif; 
+            ?>
 
         </div>
     </div>
@@ -175,80 +181,53 @@ get_header(); ?>
         <div class="glt-center-header">
             <span class="glt-upper-title">Executive Governance</span>
             <h2 class="glt-section-title">The <span class="glt-text-blue">Leadership</span> Team</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, mollitia? Corporis doloribus asperiores facilis quam iste consequuntur necessitatibus quaerat magni!</p>
+            <p>Our dedicated team of professionals ensures excellence in every project, bringing years of industry expertise to the table.</p>
             <div class="glt-header-line"></div>
         </div>
 
         <div class="glt-grid-4">
-            
-            <div class="glt-team-card-trad">
-                <div class="glt-avatar-wrapper">
-                    <img src="https://i.pravatar.cc/600?u=1" alt="Dr. Sarah Chen">
-                    <div class="glt-avatar-frame"></div>
-                </div>
-                <div class="glt-team-info-trad">
-                    <h5>Dr. Sarah Chen</h5>
-                    <span class="glt-team-role-trad">Chief Executive Officer</span>
-                    <div class="glt-role-divider"></div>
-                    <p>Directing global strategic vision and engineering protocols for vertical mobility.</p>
-                    <div class="glt-team-social-trad">
-                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fa-solid fa-envelope"></i></a>
+            <?php
+            // WP_Query to fetch Team Members
+            $team_args = array(
+                'post_type'      => 'team',
+                'posts_per_page' => -1, // Shows all members
+                'orderby'        => 'menu_order',
+                'order'          => 'ASC',
+            );
+
+            $team_query = new WP_Query($team_args);
+
+            if ($team_query->have_posts()) :
+                while ($team_query->have_posts()) : $team_query->the_post(); 
+                    
+                    // Fetch ACF Field: Designation
+                    $designation = get_field('designation');
+                ?>
+
+                <div class="glt-team-card-trad">
+                    <div class="glt-avatar-wrapper">
+                        <?php if (has_post_thumbnail()) : ?>
+                            <?php the_post_thumbnail('large', ['alt' => get_the_title()]); ?>
+                        <?php else : ?>
+                            <img src="https://i.pravatar.cc/600?u=<?php the_ID(); ?>" alt="<?php the_title(); ?>">
+                        <?php endif; ?>
+                        <div class="glt-avatar-frame"></div>
+                    </div>
+                    <div class="glt-team-info-trad">
+                        <h5><?php the_title(); ?></h5>
+                        <?php if ($designation) : ?>
+                            <span class="glt-team-role-trad"><?php echo esc_html($designation); ?></span>
+                        <?php endif; ?>
                     </div>
                 </div>
-            </div>
 
-            <div class="glt-team-card-trad">
-                <div class="glt-avatar-wrapper">
-                    <img src="https://i.pravatar.cc/600?u=2" alt="James Sterling">
-                    <div class="glt-avatar-frame"></div>
-                </div>
-                <div class="glt-team-info-trad">
-                    <h5>James Sterling</h5>
-                    <span class="glt-team-role-trad">Operations Director</span>
-                    <div class="glt-role-divider"></div>
-                    <p>Overseeing global logistics and technical deployment for high-rise projects.</p>
-                    <div class="glt-team-social-trad">
-                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fa-solid fa-envelope"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="glt-team-card-trad">
-                <div class="glt-avatar-wrapper">
-                    <img src="https://i.pravatar.cc/600?u=3" alt="Linda Wu">
-                    <div class="glt-avatar-frame"></div>
-                </div>
-                <div class="glt-team-info-trad">
-                    <h5>Linda Wu</h5>
-                    <span class="glt-team-role-trad">Compliance Officer</span>
-                    <div class="glt-role-divider"></div>
-                    <p>Ensuring ISO safety standards and rigorous quality control across all installations.</p>
-                    <div class="glt-team-social-trad">
-                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fa-solid fa-envelope"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="glt-team-card-trad">
-                <div class="glt-avatar-wrapper">
-                    <img src="https://i.pravatar.cc/600?u=4" alt="Kevin Ross">
-                    <div class="glt-avatar-frame"></div>
-                </div>
-                <div class="glt-team-info-trad">
-                    <h5>Kevin Ross</h5>
-                    <span class="glt-team-role-trad">Head of Support</span>
-                    <div class="glt-role-divider"></div>
-                    <p>Leading the 24/7 technical rapid-response and global maintenance network.</p>
-                    <div class="glt-team-social-trad">
-                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fa-solid fa-envelope"></i></a>
-                    </div>
-                </div>
-            </div>
-
+                <?php
+                endwhile;
+                wp_reset_postdata();
+            else :
+                echo '<p>No team members found.</p>';
+            endif;
+            ?>
         </div>
     </div>
 </section>

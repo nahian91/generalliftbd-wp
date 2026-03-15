@@ -17,13 +17,8 @@
             <div class="glt-footer-col">
                 <h4 class="glt-col-title">About Us</h4>
                 <p class="glt-brand-desc">
-                    Engineering vertical excellence since 1986. We specialize in high-speed traction and sustainable MRL systems for the modern global skyline.
+                    General Lift Technology is a leading lift company in Bangladesh, specializing in state-of-the-art elevator solutions for residential, commercial, and industrial buildings. With a commitment to innovation and safety, General Lift Technology offers a wide range of elevator products and services tailored to meet the unique needs of its customers.
                 </p>
-                <div class="glt-social-row">
-                    <a href="#" class="glt-soc-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="#" class="glt-soc-icon" aria-label="X"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#" class="glt-soc-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                </div>
             </div>
 
             <div class="glt-footer-col">

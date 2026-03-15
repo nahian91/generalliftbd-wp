@@ -6,43 +6,227 @@ Template Name: Home
 
 get_header(); ?>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dashicons/2.0.0/css/dashicons.min.css">
+
+    <style>
+        :root {
+            --glt-primary: #007bff;
+            --glt-bg: #0a0a0a;
+            --glt-text: #ffffff;
+            --glt-font: 'Inter', sans-serif;
+        }
+
+        body { margin: 0; padding: 0; background: var(--glt-bg); font-family: var(--glt-font); }
+
+        /* --- Hero Section Styling --- */
+        .glt-hero-trad-pro {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            background: #050505;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .glt-overlay-matte {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 123, 255, 0.15) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .glt-blueprint-grid {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+        }
+
+        .glt-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* --- Slider Content --- */
+        .glt-hero-inner {
+            max-width: 700px;
+        }
+
+        .glt-hero-top {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .glt-trad-badge {
+            background: var(--glt-primary);
+            padding: 5px 12px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: white;
+        }
+
+        .glt-trad-meta {
+            color: rgba(255,255,255,0.6);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .glt-trad-meta i { vertical-align: middle; margin-right: 5px; color: var(--glt-primary); }
+
+        .glt-hero-h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: white;
+            font-weight: 800;
+        }
+
+        .glt-hero-p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        /* --- Buttons --- */
+        .glt-hero-cta-group { display: flex; gap: 15px; }
+        .glt-btn-trad-primary, .glt-btn-trad-outline {
+            padding: 16px 32px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .glt-btn-trad-primary { background: var(--glt-primary); color: white; }
+        .glt-btn-trad-outline { border: 1px solid rgba(255,255,255,0.2); color: white; }
+        .glt-btn-trad-outline:hover { background: white; color: black; }
+
+        /* --- Owl Carousel Customization --- */
+        .owl-dots {
+            position: absolute;
+            bottom: -60px;
+            left: 0;
+        }
+        .owl-dot span {
+            width: 30px !important;
+            height: 3px !important;
+            border-radius: 0 !important;
+            background: rgba(255,255,255,0.2) !important;
+        }
+        .owl-dot.active span {
+            background: var(--glt-primary) !important;
+            width: 60px !important;
+        }
+
+        /* --- Lift Shaft Indicators --- */
+        .glt-lift-shaft-line {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            z-index: 20;
+        }
+        .glt-lift-shaft-line::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: rgba(255,255,255,0.1);
+            z-index: -1;
+        }
+        .glt-lift-car-indicator {
+            width: 50px;
+            height: 50px;
+            background: #111;
+            border: 1px solid var(--glt-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
+        .glt-lift-car-indicator.inactive {
+            opacity: 0.3;
+            border-color: rgba(255,255,255,0.1);
+            transform: translateX(10px);
+        }
+
+        /* Animations */
+        .owl-item.active .glt-hero-h1 { animation: fadeInUp 0.8s both; }
+        .owl-item.active .glt-hero-p { animation: fadeInUp 0.8s both 0.2s; }
+    </style>
+
+
 <section id="hero" class="glt-hero-trad-pro">
     <div class="glt-overlay-matte"></div>
     <div class="glt-blueprint-grid"></div>
     
     <div class="glt-container">
-        <div class="glt-hero-inner">
+        <div id="glt-hero-slider" class="owl-carousel owl-theme">
             
-            <div class="glt-hero-top">
-                <span class="glt-trad-badge">ESTABLISHED 1986</span>
-                <span class="glt-trad-divider"></span>
-                <span class="glt-trad-meta">ISO 9001:2026 CERTIFIED</span>
-            </div>
-            
-            <h1 class="glt-hero-h1">General Lift Technology</h1>
-            
-            <p class="glt-hero-p">
-                Dedicated to the design, installation, and maintenance of high-performance lift systems. 
-                Our engineering protocols ensure maximum uptime and passenger safety for the world’s most demanding skylines.
-            </p>
-
-            <div class="glt-hero-cta-group">
-                <a href="#solutions" class="glt-btn-trad-primary">Project Portfolio</a>
-                <a href="#specs" class="glt-btn-trad-outline">Request Data Sheet</a>
+            <div class="glt-hero-slide">
+                <div class="glt-hero-inner">
+                    <div class="glt-hero-top">
+                        <span class="glt-trad-badge">ESTABLISHED 1986</span>
+                        <span class="glt-trad-meta"><i class="dashicons dashicons-clock"></i> 24/7 Active Service</span>
+                    </div>
+                    <h1 class="glt-hero-h1">Continuous Mobility Systems</h1>
+                    <p class="glt-hero-p">Experience total peace of mind with our round-the-clock emergency assistance. Our dedicated rapid-response team ensures your elevators remain safe and reliable every single hour.</p>
+                    <div class="glt-hero-cta-group">
+                        <a href="#" class="glt-btn-trad-primary">Our Services</a>
+                        <a href="#" class="glt-btn-trad-outline">Technical Specs</a>
+                    </div>
+                </div>
             </div>
 
-            <div class="glt-hero-stats">
-                <div class="glt-stat-item">
-                    <span class="glt-stat-num">5000+</span>
-                    <span class="glt-stat-label">Units Installed</span>
+            <div class="glt-hero-slide">
+                <div class="glt-hero-inner">
+                    <div class="glt-hero-top">
+                        <span class="glt-trad-badge">ESTABLISHED 1986</span>
+                        <span class="glt-trad-meta"><i class="dashicons dashicons-shield-alt"></i> 2 Years Free Service</span>
+                    </div>
+                    <h1 class="glt-hero-h1">Guaranteed Performance</h1>
+                    <p class="glt-hero-p">We protect your investment with a comprehensive two-year complimentary maintenance package. This includes regular safety check-ups and preventative tuning for peak performance.</p>
+                    <div class="glt-hero-cta-group">
+                        <a href="#" class="glt-btn-trad-primary">View Warranty</a>
+                        <a href="#" class="glt-btn-trad-outline">Learn More</a>
+                    </div>
                 </div>
-                <div class="glt-stat-item">
-                    <span class="glt-stat-num">24/7</span>
-                    <span class="glt-stat-label">Support Network</span>
-                </div>
-                <div class="glt-stat-item">
-                    <span class="glt-stat-num">Zero</span>
-                    <span class="glt-stat-label">Critical Failures</span>
+            </div>
+
+            <div class="glt-hero-slide">
+                <div class="glt-hero-inner">
+                    <div class="glt-hero-top">
+                        <span class="glt-trad-badge">ESTABLISHED 1986</span>
+                        <span class="glt-trad-meta"><i class="dashicons dashicons-art"></i> Custom Design</span>
+                    </div>
+                    <h1 class="glt-hero-h1">Bespoke Engineering</h1>
+                    <p class="glt-hero-p">Elevate your building’s identity with bespoke cabin interiors and premium finishes. From panoramic glass to luxury lighting, we tailor every detail to your architectural vision.</p>
+                    <div class="glt-hero-cta-group">
+                        <a href="#" class="glt-btn-trad-primary">Design Studio</a>
+                        <a href="#" class="glt-btn-trad-outline">Portfolio</a>
+                    </div>
                 </div>
             </div>
 
@@ -50,9 +234,216 @@ get_header(); ?>
     </div>
 
     <div class="glt-lift-shaft-line">
-        <div class="glt-lift-car-indicator"><span>01</span></div>
-        <div class="glt-lift-car-indicator inactive"><span>02</span></div>
-        <div class="glt-lift-car-indicator inactive"><span>03</span></div>
+        <div class="glt-lift-car-indicator" data-slide="0"><span>01</span></div>
+        <div class="glt-lift-car-indicator inactive" data-slide="1"><span>02</span></div>
+        <div class="glt-lift-car-indicator inactive" data-slide="2"><span>03</span></div>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+<script>
+$(document).ready(function(){
+    var owl = $('#glt-hero-slider');
+    
+    owl.owlCarousel({
+        items: 1,
+        loop: true,
+        margin: 0,
+        nav: false,
+        dots: true,
+        autoplay: true,
+        autoplayTimeout: 6000,
+        smartSpeed: 1000,
+        animateOut: 'fadeOut',
+        onChanged: function(event) {
+            // Logic to sync indicators
+            var index = event.item.index - event.relatedTarget._clones.length / 2;
+            var total = event.item.count;
+            if (index >= total) index = 0;
+            if (index < 0) index = total - 1;
+
+            $('.glt-lift-car-indicator').addClass('inactive');
+            $('.glt-lift-car-indicator').eq(index).removeClass('inactive');
+        }
+    });
+
+    // Click indicator to go to slide
+    $('.glt-lift-car-indicator').click(function() {
+        var slideIndex = $(this).data('slide');
+        owl.trigger('to.owl.carousel', [slideIndex, 500]);
+    });
+});
+</script>
+
+<style>
+    :root {
+        --glt-blue: #007aff;
+        --glt-dark-text: #2c3e50;
+        --glt-light-text: #5d6d7e;
+        --glt-border-color: #eef2f7;
+    }
+
+    .glt-leadership-module {
+        padding: 80px 0;
+        background: #ffffff;
+    }
+
+    /* Grid Container */
+    .glt-leader-card {
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        border: 1px solid var(--glt-border-color);
+        margin-bottom: 40px;
+        background: #fff;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .glt-leader-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    }
+
+    /* Column 1: Identity Profile */
+    .glt-profile-side {
+        padding: 60px 40px;
+        text-align: center;
+        background: #fcfdfe;
+        border-right: 1px solid var(--glt-border-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .glt-leader-avatar {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        margin-bottom: 25px;
+        padding: 8px;
+        border: 1px solid var(--glt-border-color);
+        background: #fff;
+    }
+
+    .glt-leader-avatar img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        filter: grayscale(20%);
+    }
+
+    .glt-leader-name {
+        font-size: 22px;
+        font-weight: 800;
+        color: var(--glt-dark-text);
+        margin: 0 0 8px 0;
+        line-height: 1.2;
+    }
+
+    .glt-leader-desig {
+        font-size: 13px;
+        color: var(--glt-blue);
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-weight: 700;
+    }
+
+    /* Column 2: Message Content */
+    .glt-message-side {
+        padding: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .glt-msg-header {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--glt-dark-text);
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+    .glt-msg-header::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background: var(--glt-blue);
+    }
+
+    .glt-msg-body {
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--glt-light-text);
+        text-align: justify;
+        margin-bottom: 20px;
+    }
+
+    .glt-read-link {
+        color: var(--glt-dark-text);
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 14px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .glt-read-link:hover { color: var(--glt-blue); }
+
+    /* Responsive */
+    @media (max-width: 991px) {
+        .glt-leader-card { grid-template-columns: 1fr; }
+        .glt-profile-side { border-right: none; border-bottom: 1px solid var(--glt-border-color); }
+        .glt-message-side { padding: 40px; }
+    }
+</style>
+
+<section class="glt-leadership-module">
+    <div class="glt-container">
+        
+        <div class="glt-leader-card">
+            <div class="glt-profile-side">
+                <div class="glt-leader-avatar">
+                    <img src="https://via.placeholder.com/200" alt="Chairman">
+                </div>
+                <h3 class="glt-leader-name">Danobir Dr. Syed Ragib Ali</h3>
+                <span class="glt-leader-desig">Founder & Chairman</span>
+            </div>
+            
+            <div class="glt-message-side">
+                <h2 class="glt-msg-header">Message from the Chairman</h2>
+                <p class="glt-msg-body">
+                    It is my privilege to welcome you to General Lift Technology. Since our inception, we have endeavored to impart internationally standard engineering solutions at an affordable cost. Our mission is attributed to the production of competent technical manpower so as to expedite the collective development of our infrastructure. We prioritize safety and precision above all else.
+                </p>
+                <a href="#" class="glt-read-link">Read Full Message &rarr;</a>
+            </div>
+        </div>
+
+        <div class="glt-leader-card">
+            <div class="glt-profile-side">
+                <div class="glt-leader-avatar">
+                    <img src="https://via.placeholder.com/200" alt="MD">
+                </div>
+                <h3 class="glt-leader-name">Prof. Dr. Mohammed Taj Uddin</h3>
+                <span class="glt-leader-desig">Managing Director</span>
+            </div>
+            
+            <div class="glt-message-side">
+                <h2 class="glt-msg-header">Message from the MD</h2>
+                <p class="glt-msg-body">
+                    Our vision is to produce professionally competent and accomplished systems that encounter any challenge in the architectural field. We focus on inspired intellect, high morals, and social responsibility. GLT addresses the multidimensional requirements of the modern job market through smooth innovation and rigorous safety standards.
+                </p>
+                <a href="#" class="glt-read-link">Read Full Message &rarr;</a>
+            </div>
+        </div>
+
     </div>
 </section>
 
