@@ -5,6 +5,7 @@
     $product_badge = get_field('product_badge');
     $short_description = get_field('product_short_description');
     $main_title = get_field('product_main_title');
+    $price = get_field('product_price');
     $full_description = get_field('product_description');
     $video_url = get_field('product_video');
     $features = get_field('product_features'); // Repeater
@@ -102,6 +103,12 @@
             </div>
 
             <aside class="glt-product-sidebar product-features">
+                <?php if($price) {
+                    ?>
+                        <span class="glt-btn-primary"><?php echo $price;?></span>
+                    <?php 
+                }
+                ?>
                 <?php if ($infos) : ?>
                 <div class="glt-glass-card glt-spec-card">
                     <div class="glt-card-header">

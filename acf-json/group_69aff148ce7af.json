@@ -24,6 +24,27 @@
             "append": ""
         },
         {
+            "key": "field_69b679a737eb7",
+            "label": "Product Price",
+            "name": "product_price",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_69aff1b15bb9a",
             "label": "Product Short Description",
             "name": "product_short_description",
@@ -362,5 +383,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1773560726
+    "modified": 1773566386
 }
