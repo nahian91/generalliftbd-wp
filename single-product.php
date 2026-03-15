@@ -4,10 +4,12 @@
     // ACF Field Variables
     $product_badge = get_field('product_badge');
     $short_description = get_field('product_short_description');
+    $main_title = get_field('product_main_title');
     $full_description = get_field('product_description');
     $video_url = get_field('product_video');
     $features = get_field('product_features'); // Repeater
     $specs = get_field('product_technical_specs'); // Repeater
+    $infos = get_field('product_infos'); // Repeater
     $gallery = get_field('product_gallery'); // Gallery Array
 ?>
 
@@ -46,7 +48,7 @@
                 </div>
 
                 <div class="glt-content-block">
-                    <h2 class="glt-sub-heading">Unrivaled <span class="glt-text-blue">Vertical Performance</span></h2>
+                    <h2 class="glt-sub-heading"><?php echo $main_title;?></h2>
                     <div class="glt-lead-text">
                         <?php echo wpautop($full_description); ?>
                     </div>
@@ -75,20 +77,50 @@
                     </div>
                     <?php endif; ?>
 
+
+                    <?php if ($gallery) : ?>
+                    <div class="glt-gallery-container glt-section-inside">
+                        <h4>Gallery</h4>  
+                        <div class="product-gallery-grid">
+                            <?php foreach($gallery as $gal) {
+                                ?>
+                                    <img src="<?php echo $gal['url'];?>" alt="">
+                                <?php 
+                            }
+                            ?>
+                        </div>                      
+                    </div>
+                    <?php endif; ?>
+
                     <?php if ($video_url) : ?>
                     <div class="glt-video-container glt-section-inside">
+                        <h4>Video</h4>
                         <iframe width="100%" height="450" src="<?php echo str_replace('watch?v=', 'embed/', $video_url); ?>" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <?php endif; ?>
                 </div>
             </div>
 
-            <aside class="glt-product-sidebar">
+            <aside class="glt-product-sidebar product-features">
+                <?php if ($infos) : ?>
+                <div class="glt-glass-card glt-spec-card">
+                    <div class="glt-card-header">
+                        <h3>Main Features</h3>
+                    </div>
+                    <ul class="glt-spec-list">
+                        <?php foreach ($infos as $info) : ?>
+                            <li>
+                                <?php echo esc_html($info['product_info_title']); ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+                <?php endif; ?>
+
                 <?php if ($specs) : ?>
                 <div class="glt-glass-card glt-spec-card">
                     <div class="glt-card-header">
-                        <h3>Technical <span class="glt-text-blue">Specs</span></h3>
-                        <i class="fa-solid fa-microchip"></i>
+                        <h3>Basic Info</h3>
                     </div>
                     <ul class="glt-spec-list">
                         <?php foreach ($specs as $spec) : ?>
@@ -98,15 +130,11 @@
                             </li>
                         <?php endforeach; ?>
                     </ul>
-                    <a href="#" class="glt-btn-download">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-                        Technical Catalog
-                    </a>
                 </div>
                 <?php endif; ?>
 
                 <div class="glt-glass-card glt-inquiry-box">
-                    <h3>Direct <span class="glt-text-blue">Inquiry</span></h3>
+                    <h3>Direct Inquiry</h3>
                     <p>Contact our engineering desk for custom shaft specifications.</p>
                     <form class="glt-form-minimal">
                         <div class="glt-input-group">

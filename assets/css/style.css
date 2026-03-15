@@ -1543,30 +1543,49 @@ a { text-decoration: none; color: inherit; transition: var(--glt-transition); }
 .glt-feature-box {
     padding: 40px;
     background: #fff;
-    border: 1px solid #f1f5f9;
+    border: 1px solid #ddd;
     transition: all 0.3s ease;
 }
-
+.glt-gallery-container.glt-section-inside {
+	margin-top: 60px;
+}
 .glt-feature-box:hover {
     border-color: #0ea5e9;
     background: #f8fafc;
 }
-
+.glt-product-main .glt-sub-heading {
+  font-size: 30px;
+  line-height: 40px;
+  margin-bottom: 20px;
+}
 .glt-svg-icon {
     width: 50px; height: 50px;
-    color: #0ea5e9;
+    line-height: 50px;
+    background-color: #0ea5e9;
+    color: #fff;
     margin-bottom: 20px;
+    text-align: center;
+}
+
+.glt-svg-icon span{
+    vertical-align: middle;
 }
 
 /* Glass-morphism Cards */
 .glt-glass-card {
-    background: #fff;
-    border: 1px solid #e2e8f0;
-    padding: 40px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+	background: #fff;
+	border: 1px solid #e2e8f0;
+	padding: 20px;
+	margin-bottom: 30px;
+	box-shadow: 0 4px 20px rgba(0,0,0,0.03);
 }
 
+.glt-card-header h3 {
+  font-size: 22px;
+  font-family: inherit;
+  font-weight: 700;
+  letter-spacing: 0;
+}
 .glt-card-header {
     display: flex; justify-content: space-between;
     align-items: center; margin-bottom: 25px;
@@ -1575,14 +1594,45 @@ a { text-decoration: none; color: inherit; transition: var(--glt-transition); }
 .glt-card-header i { color: #cbd5e1; font-size: 1.5rem; }
 
 /* Technical Spec Styling */
-.glt-spec-list { list-style: none; padding: 0; margin-bottom: 30px; }
+.glt-spec-list { list-style: none; padding: 0;}
 .glt-spec-list li {
     display: flex; justify-content: space-between;
     padding: 15px 0; border-bottom: 1px solid #f1f5f9;
 }
 
-.glt-spec-list span { color: #94a3b8; font-size: 0.85rem; font-weight: 600; }
+.glt-spec-list span { color: #111; font-size: 0.85rem; font-weight: 600; }
 .glt-spec-list strong { color: #0f172a; font-size: 0.9rem; }
+
+
+.glt-product-sidebar.product-features li {
+  padding: 10px 0;
+  font-size: 15px;
+}
+.glt-product-sidebar.product-features li:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+.glt-card-header {
+  margin-bottom: 7px;
+}
+
+
+.glt-gallery-container.glt-section-inside h4 {
+  font-size: 24px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+.product-gallery-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.product-gallery-grid img {
+  border: 1px solid #ddd;
+  padding: 3px;
+}
 
 /* Buttons */
 .glt-btn-download {
@@ -2421,6 +2471,9 @@ a { text-decoration: none; color: inherit; transition: var(--glt-transition); }
     border-radius: 0 !important;
 }
 
+.glt-glass-card.glt-inquiry-box h3, .glt-glass-card.glt-inquiry-box p {
+  margin-bottom: 20px;
+}
 .glt-team-social-trad a:hover {
     background: #0f172a;
     color: #ffffff;
