@@ -40,14 +40,77 @@
         </div>
     </div>
 </div>
+<style>
+    /* Desktop Setup */
+    .glt-header { background: #fff; width: 100%; position: relative; z-index: 9999; }
+    .glt-header-flex { display: flex; align-items: center; justify-content: space-between; margin: 0 auto; padding: 0 20px; }
+    .glt-nav-list { display: flex; list-style: none; gap: 20px; margin: 0; padding: 0; }
 
-<header class="glt-header animate__animated animate__fadeInDown animate__fast">
+    /* Mobile Logic */
+    @media (max-width: 991px) {
+        /* Keep the toggle button visible */
+        .glt-mobile-toggle { 
+            display: flex !important; 
+            align-items: center;
+            justify-content: center;
+            background: #f4f4f4; 
+            border: none; 
+            font-size: 20px; 
+            cursor: pointer; 
+            width: 45px;
+            height: 45px;
+            border-radius: 5px;
+            order: 3;
+        }
+
+        /* The Menu (Hidden State) */
+        .glt-nav {
+            position: absolute !important;
+            top: 100% !important;
+            left: 0 !important;
+            width: 100% !important;
+            background: #ffffff !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+            z-index: 10000 !important;
+            
+            /* Hidden via height & opacity */
+            max-height: 0;
+            opacity: 0;
+            visibility: hidden;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            display: block !important; /* Force block so height transition works */
+        }
+
+        /* Show Menu State */
+        .glt-nav.active-menu {
+            max-height: 80vh !important; /* Adjust based on content */
+            opacity: 1 !important;
+            visibility: visible !important;
+            border-top: 2px solid #007bff; /* Optional accent color */
+        }
+
+        .glt-nav-list {
+            flex-direction: column;
+            padding: 20px !important;
+        }
+        
+        .glt-nav-list li { 
+            width: 100%; 
+            padding: 12px 0; 
+            border-bottom: 1px solid #f0f0f0; 
+        }
+    }
+</style>
+
+<header class="glt-header">
     <div class="glt-container glt-header-flex">
-        <a href="index.php" class="glt-logo">
-            <img src="<?php echo get_template_directory_uri();?>/assets/img/logo.png" alt="General Lift">
+        
+        <a href="<?php echo esc_url(home_url('/')); ?>" class="glt-logo">
+            <img src="<?php echo get_template_directory_uri();?>/assets/img/logo.png" alt="Logo">
         </a>
 
-        <nav class="glt-nav">
+        <nav class="glt-nav" id="glt-navigation">
             <?php
             wp_nav_menu( array(
                 'theme_location' => 'menu-1',
@@ -60,13 +123,46 @@
             ?>
         </nav>
 
-        <div class="glt-header-action">
-            <a href="#contact" class="glt-btn-primary animate__animated animate__pulse animate__infinite animate__slow">
-                <i class="fa-solid fa-phone"></i> +88 01621 222 255
+        <div class="glt-header-action" style="display: flex; align-items: center; gap: 10px;">
+            <a href="tel:+8801621222255" class="glt-btn-primary" style="padding: 10px 15px; text-decoration: none; border-radius: 5px;">
+                <i class="fa-solid fa-phone"></i>
             </a>
-            <button class="glt-mobile-toggle">
+
+            <button class="glt-mobile-toggle" id="glt-trigger">
                 <i class="fa-solid fa-bars-staggered"></i>
             </button>
         </div>
     </div>
 </header>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const trigger = document.getElementById('glt-trigger');
+    const menu = document.getElementById('glt-navigation');
+
+    if (trigger && menu) {
+        trigger.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Just toggle the menu class
+            menu.classList.toggle('active-menu');
+            
+            // Visual feedback: rotate the button slightly (optional)
+            if(menu.classList.contains('active-menu')) {
+                trigger.style.transform = "rotate(90deg)";
+            } else {
+                trigger.style.transform = "rotate(0deg)";
+            }
+        });
+
+        // Close menu if user clicks anywhere else on the page
+        document.addEventListener('click', function(event) {
+            if (!menu.contains(event.target) && !trigger.contains(event.target)) {
+                menu.classList.remove('active-menu');
+                trigger.style.transform = "rotate(0deg)";
+            }
+        });
+    }
+});
+</script>

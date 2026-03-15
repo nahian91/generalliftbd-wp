@@ -64,7 +64,7 @@ a { text-decoration: none; color: inherit; transition: var(--glt-transition); }
 
 /* 3. LAYOUT UTILITIES 
    ------------------------------------------------------------- */
-.glt-container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+.glt-container { max-width: 1170px; margin: 0 auto; padding: 0 20px}
 
 .glt-section { padding: 100px 0; position: relative; }
 
@@ -153,7 +153,7 @@ a { text-decoration: none; color: inherit; transition: var(--glt-transition); }
 }
 
 .glt-logo img {
-	max-width: 160px;
+	max-width: 180px;
 }
 
 .glt-logo-icon {
@@ -287,7 +287,6 @@ a { text-decoration: none; color: inherit; transition: var(--glt-transition); }
 
 @media (max-width: 768px) {
     .glt-topbar { display: none; }
-    .glt-header { height: 80px; }
 }
 
 
@@ -3330,8 +3329,6 @@ a { text-decoration: none; color: inherit; transition: var(--glt-transition); }
   border: 1px solid #ddd;
   margin-bottom: 40px;
 }
-.wp-block-group__inner-container.is-layout-flo {
-}
 .wp-block-heading {
   background-color: #37b4ec;
   color: #fff;
@@ -3413,8 +3410,7 @@ a { text-decoration: none; color: inherit; transition: var(--glt-transition); }
         }
 
         .glt-container {
-            width: 90%;
-            max-width: 1200px;
+            max-width: 1170px;
             margin: 0 auto;
             position: relative;
             z-index: 10;
@@ -3554,6 +3550,24 @@ a { text-decoration: none; color: inherit; transition: var(--glt-transition); }
   background-color: #333;
   left: 0;
   top: 0;
-  opacity: .8;
+  opacity: .5;
   z-index: -1;
 }
+
+@media only screen and (max-width: 767px) {
+    .glt-leader-grid {
+        flex-direction: column;
+    }
+    .glt-hero-h1 {
+        font-size: 40px;
+        line-height: 50px;
+        font-weight: 800;
+    }
+    .glt-logo img {
+        max-width: 130px;
+    }
+    .glt-nav-list{
+        gap: 0 !important;
+    }
+}
+
