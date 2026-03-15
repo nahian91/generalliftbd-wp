@@ -214,9 +214,13 @@ function generallift_scripts() {
 	wp_enqueue_style( 'generallift-main', get_template_directory_uri() . '/assets/css/style.css', array(), _S_VERSION, 'all' );
 
 	wp_enqueue_style( 'generallift-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/assets/css/owl.carousel.min.css', array(), '2.3.4' );
+	wp_enqueue_style( 'animate', get_template_directory_uri() . '/assets/css/animate.min.css', array(), '2.3.4' );
 	wp_style_add_data( 'generallift-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'generallift-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'generallift-owl', get_template_directory_uri() . '/assets/js/owl-carousel.min.js', array('jquery'), _S_VERSION, true );
+	wp_enqueue_script( 'generallift-script', get_template_directory_uri() . '/assets/js/script.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

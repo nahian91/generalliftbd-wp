@@ -45,56 +45,57 @@ get_header(); ?>
                     <div class="glt-line-deco"></div>
                 </div>
             </div>
-
             <div class="glt-about-text">
+
+            <?php 
+                $about_subtitle = get_field('about_subtitle', 'option');
+                $about_title = get_field('about_title', 'option');
+                $about_description = get_field('about_description', 'option');
+                $about_features = get_field('about_features', 'option');
+            ?>
+
                 <div class="glt-label-group">
-                    <span class="glt-upper-title">Engineering Authority</span>
+                    <span class="glt-upper-title"><?php echo $about_subtitle;?></span>
                     <div class="glt-title-line"></div>
                 </div>
                 
-                <h2 class="glt-section-title">The Standard in <br><span class="glt-text-blue">Vertical Mobility</span></h2>
+                <h2 class="glt-section-title"><?php echo $about_title;?></h2>
                 
                 <p class="glt-lead">
-                    GLT Elevate operates at the intersection of structural integrity and digital innovation. We engineer seamless transitions for high-density environments, prioritizing <strong>Safety Redundancy</strong> and <strong>Operational Uptime</strong>.
+                    <?php echo $about_description;?>
                 </p>
 
                 <div class="glt-about-features">
-                    
-                    <div class="glt-feat-item">
-                        <div class="glt-feat-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                        </div>
-                        <div class="glt-feat-content">
-                            <h4>Safety Protocol 5.0</h4>
-                            <p>Advanced dual-redundancy braking systems and real-time cabin telemetry.</p>
-                        </div>
-                    </div>
+    <?php 
+    $about_features = get_field('about_features', 'option');
 
-                    <div class="glt-feat-item">
-                        <div class="glt-feat-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                        </div>
-                        <div class="glt-feat-content">
-                            <h4>Regen Drive Tech</h4>
-                            <p>Integrated energy recovery systems harvesting power from descending loads.</p>
-                        </div>
-                    </div>
-
-                    <div class="glt-feat-item">
-                        <div class="glt-feat-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                        </div>
-                        <div class="glt-feat-content">
-                            <h4>Safety Protocol 5.0</h4>
-                            <p>Advanced dual-redundancy braking systems and real-time cabin telemetry.</p>
-                        </div>
-                    </div>
-
-                </div>
-                
-                <div class="glt-about-cta">
-                    <a href="#contact" class="glt-btn-trad-primary">View Technical Portfolio</a>
-                </div>
+    if ( $about_features ) :
+        foreach ( $about_features as $feature ) : 
+            $icon_class  = esc_attr( $feature['about_feature_icon'] );
+            $feat_title  = esc_html( $feature['about_feature_title'] );
+            $feat_desc   = esc_html( $feature['about_feature_description'] );
+    ?>
+        <div class="glt-feat-item">
+            <div class="glt-feat-icon">
+                <?php if ( strpos($icon_class, 'dashicons') !== false ) : ?>
+                    <span class="dashicons <?php echo $icon_class; ?>"></span>
+                <?php else : ?>
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    </svg>
+                <?php endif; ?>
+            </div>
+            
+            <div class="glt-feat-content">
+                <h4><?php echo $feat_title; ?></h4>
+                <p><?php echo $feat_desc; ?></p>
+            </div>
+        </div>
+    <?php 
+        endforeach; 
+    endif; 
+    ?>
+</div>
             </div>
 
         </div>

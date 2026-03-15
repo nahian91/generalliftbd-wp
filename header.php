@@ -26,7 +26,7 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'generallift' ); ?></a>
 
-	 <div class="glt-topbar">
+<div class="glt-topbar animate__animated animate__fadeIn">
     <div class="glt-container glt-topbar-flex">
         <div class="glt-topbar-left">
             <div class="glt-social-minimal">
@@ -41,28 +41,32 @@
     </div>
 </div>
 
-<header class="glt-header">
+<header class="glt-header animate__animated animate__fadeInDown animate__fast">
     <div class="glt-container glt-header-flex">
         <a href="index.php" class="glt-logo">
-            <img src="<?php echo get_template_directory_uri();?>/assets/img/logo.png" alt="">
+            <img src="<?php echo get_template_directory_uri();?>/assets/img/logo.png" alt="General Lift">
         </a>
 
         <nav class="glt-nav">
-    <?php
-    wp_nav_menu( array(
-        'theme_location' => 'menu-1',
-        'container'      => false,
-        'menu_class'     => 'glt-nav-list',
-        'fallback_cb'    => '__return_false',
-        'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-        'walker'         => new GLT_Walker_Nav_Menu(),
-    ) );
-    ?>
-</nav>
+            <?php
+            wp_nav_menu( array(
+                'theme_location' => 'menu-1',
+                'container'      => false,
+                'menu_class'     => 'glt-nav-list',
+                'fallback_cb'    => '__return_false',
+                'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                'walker'         => new GLT_Walker_Nav_Menu(),
+            ) );
+            ?>
+        </nav>
 
         <div class="glt-header-action">
-            <a href="#contact" class="glt-btn-primary"><i class="fa-solid fa-magnifying-glass"></i> +88 01621 222 255</a>
-            <button class="glt-mobile-toggle"><i class="fa-solid fa-bars-staggered"></i></button>
+            <a href="#contact" class="glt-btn-primary animate__animated animate__pulse animate__infinite animate__slow">
+                <i class="fa-solid fa-phone"></i> +88 01621 222 255
+            </a>
+            <button class="glt-mobile-toggle">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
         </div>
     </div>
 </header>

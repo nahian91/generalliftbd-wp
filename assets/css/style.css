@@ -589,7 +589,7 @@ a { text-decoration: none; color: inherit; transition: var(--glt-transition); }
 /* Card Styling */
 .glt-service-card {
     background: #ffffff;
-    padding: 50px 40px;
+    padding: 20px 25px;
     border-radius: 12px;
     border: 1px solid #e2e8f0;
     position: relative;
@@ -1858,7 +1858,6 @@ a { text-decoration: none; color: inherit; transition: var(--glt-transition); }
    ================================================================ */
 
 .glt-hero-trad-pro {
-    padding: 50px 0;
     position: relative;
     width: 100%;
     display: flex;
@@ -2373,7 +2372,6 @@ a { text-decoration: none; color: inherit; transition: var(--glt-transition); }
     aspect-ratio: 1 / 1; /* Forces square shape regardless of image source */
     object-fit: cover;
     display: block;
-    filter: grayscale(100%);
     transition: 0.6s ease;
 }
 
@@ -3380,4 +3378,182 @@ a { text-decoration: none; color: inherit; transition: var(--glt-transition); }
 }
 .glt-feature-box p {
   font-size: 14px;
+}
+        :root {
+            --glt-primary: #007bff;
+            --glt-bg: #0a0a0a;
+            --glt-text: #ffffff;
+            --glt-font: 'Inter', sans-serif;
+        }
+
+        body { margin: 0; padding: 0; background: var(--glt-bg); font-family: var(--glt-font); }
+
+        /* --- Hero Section Styling --- */
+        .glt-hero-trad-pro {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .glt-overlay-matte {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 123, 255, 0.15) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .glt-blueprint-grid {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+        }
+
+        .glt-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .glt-hero-top {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .glt-trad-badge {
+            background: var(--glt-primary);
+            padding: 5px 12px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: white;
+        }
+
+        .glt-trad-meta {
+            color: rgba(255,255,255,0.6);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .glt-trad-meta i { vertical-align: middle; margin-right: 5px; color: var(--glt-primary); }
+
+        .glt-hero-h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: white;
+            font-weight: 800;
+        }
+
+        .glt-hero-p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        /* --- Buttons --- */
+        .glt-hero-cta-group { display: flex; gap: 15px; }
+        .glt-btn-trad-primary, .glt-btn-trad-outline {
+            padding: 16px 32px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .glt-btn-trad-primary { background: var(--glt-primary); color: white; }
+        .glt-btn-trad-outline { border: 1px solid rgba(255,255,255,0.2); color: white; }
+        .glt-btn-trad-outline:hover { background: white; color: black; }
+
+        /* --- Owl Carousel Customization --- */
+        .owl-dots {
+            position: absolute;
+            bottom: -60px;
+            left: 0;
+        }
+        .owl-dot span {
+            width: 30px !important;
+            height: 3px !important;
+            border-radius: 0 !important;
+            background: rgba(255,255,255,0.2) !important;
+        }
+        .owl-dot.active span {
+            background: var(--glt-primary) !important;
+            width: 60px !important;
+        }
+
+        /* --- Lift Shaft Indicators --- */
+        .glt-lift-shaft-line {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            z-index: 20;
+        }
+        .glt-lift-shaft-line::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: rgba(255,255,255,0.1);
+            z-index: -1;
+        }
+        .glt-lift-car-indicator {
+            width: 50px;
+            height: 50px;
+            background: #111;
+            border: 1px solid var(--glt-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
+        .glt-lift-car-indicator.inactive {
+            opacity: 0.3;
+            border-color: rgba(255,255,255,0.1);
+            transform: translateX(10px);
+        }
+
+        /* Animations */
+        .owl-item.active .glt-hero-h1 { animation: fadeInUp 0.8s both; }
+        .owl-item.active .glt-hero-p { animation: fadeInUp 0.8s both 0.2s; }
+        
+.glt-services .glt-section-title {
+  color: #fff;
+}
+
+.glt-hero-slide {
+  background-size: cover;
+  background-position: center;
+  padding: 80px 0;
+  position: relative;
+  z-index: 2;
+}
+.glt-hero-slide:before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  left: 0;
+  top: 0;
+  opacity: .8;
+  z-index: -1;
 }
