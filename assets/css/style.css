@@ -1618,6 +1618,7 @@ a { text-decoration: none; color: inherit; transition: var(--glt-transition); }
 .product-gallery-grid img {
   border: 1px solid #ddd;
   padding: 3px;
+  max-width: 145px;
 }
 
 /* Buttons */
