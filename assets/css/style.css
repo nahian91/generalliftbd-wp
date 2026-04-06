@@ -3571,3 +3571,17 @@ a { text-decoration: none; color: inherit; transition: var(--glt-transition); }
     }
 }
 
+
+.glt-social-minimal h4 {
+  margin-bottom: 45px;
+}
+.glt-social-minimal a {
+  color: #fff;
+  background-color: #0ea5e9;
+  width: 35px;
+  height: 35px;
+  display: inline-block;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 50%;
+}

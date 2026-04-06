@@ -13,18 +13,18 @@
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="profile" href="https://gmpg.org/xfn/11">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta charset="<?php bloginfo( 'charset' ); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="https://gmpg.org/xfn/11">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-	<?php wp_head(); ?>
+    <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'generallift' ); ?></a>
+    <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'generallift' ); ?></a>
 
 <div class="glt-topbar animate__animated animate__fadeIn">
     <div class="glt-container glt-topbar-flex">
@@ -40,15 +40,39 @@
         </div>
     </div>
 </div>
+
 <style>
-    /* Desktop Setup */
-    .glt-header { background: #fff; width: 100%; position: relative; z-index: 9999; }
-    .glt-header-flex { display: flex; align-items: center; justify-content: space-between; margin: 0 auto; padding: 0 20px; }
+    /* Base Header Setup */
+    .glt-header { 
+        background: #fff; 
+        width: 100%; 
+        position: relative; 
+        z-index: 9999; 
+        transition: all 0.3s ease;
+    }
+
+    /* Sticky State - Triggered by JS */
+    .glt-header.is-sticky {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        animation: gltSlideDown 0.4s ease-in-out;
+        border-bottom: 1px solid #eee;
+    }
+
+    @keyframes gltSlideDown {
+        from { transform: translateY(-100%); }
+        to { transform: translateY(0); }
+    }
+
+    .glt-header-flex { display: flex; align-items: center; justify-content: space-between; margin: 0 auto; padding: 10px 20px; }
     .glt-nav-list { display: flex; list-style: none; gap: 20px; margin: 0; padding: 0; }
+    .glt-logo img { max-height: 50px; width: auto; }
 
     /* Mobile Logic */
     @media (max-width: 991px) {
-        /* Keep the toggle button visible */
         .glt-mobile-toggle { 
             display: flex !important; 
             align-items: center;
@@ -61,9 +85,9 @@
             height: 45px;
             border-radius: 5px;
             order: 3;
+            transition: transform 0.3s ease;
         }
 
-        /* The Menu (Hidden State) */
         .glt-nav {
             position: absolute !important;
             top: 100% !important;
@@ -72,22 +96,19 @@
             background: #ffffff !important;
             box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
             z-index: 10000 !important;
-            
-            /* Hidden via height & opacity */
             max-height: 0;
             opacity: 0;
             visibility: hidden;
             overflow: hidden;
             transition: all 0.3s ease-in-out;
-            display: block !important; /* Force block so height transition works */
+            display: block !important;
         }
 
-        /* Show Menu State */
         .glt-nav.active-menu {
-            max-height: 80vh !important; /* Adjust based on content */
+            max-height: 80vh !important;
             opacity: 1 !important;
             visibility: visible !important;
-            border-top: 2px solid #007bff; /* Optional accent color */
+            border-top: 2px solid #007bff;
         }
 
         .glt-nav-list {
@@ -103,7 +124,7 @@
     }
 </style>
 
-<header class="glt-header">
+<header class="glt-header" id="main-header">
     <div class="glt-container glt-header-flex">
         
         <a href="<?php echo esc_url(home_url('/')); ?>" class="glt-logo">
@@ -124,9 +145,11 @@
         </nav>
 
         <div class="glt-header-action" style="display: flex; align-items: center; gap: 10px;">
-            <a href="tel:+8801621222255" class="glt-btn-primary" style="padding: 10px 15px; text-decoration: none; border-radius: 5px;">
+            <a href="tel:+8801621222255" class="glt-btn-primary" style="padding: 10px 15px; text-decoration: none; border-radius: 5px; background: #007bff; color: #fff;">
                 <i class="fa-solid fa-phone"></i>
             </a>
+
+            <?php echo do_shortcode('[gtranslate]');?>
 
             <button class="glt-mobile-toggle" id="glt-trigger">
                 <i class="fa-solid fa-bars-staggered"></i>
@@ -137,18 +160,28 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    const header = document.getElementById('main-header');
     const trigger = document.getElementById('glt-trigger');
     const menu = document.getElementById('glt-navigation');
+    const topbarHeight = document.querySelector('.glt-topbar')?.offsetHeight || 50;
 
+    // --- STICKY LOGIC ---
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > topbarHeight + 20) {
+            header.classList.add('is-sticky');
+        } else {
+            header.classList.remove('is-sticky');
+        }
+    });
+
+    // --- MENU TOGGLE LOGIC ---
     if (trigger && menu) {
         trigger.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             
-            // Just toggle the menu class
             menu.classList.toggle('active-menu');
             
-            // Visual feedback: rotate the button slightly (optional)
             if(menu.classList.contains('active-menu')) {
                 trigger.style.transform = "rotate(90deg)";
             } else {
@@ -156,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Close menu if user clicks anywhere else on the page
+        // Close menu if user clicks anywhere else
         document.addEventListener('click', function(event) {
             if (!menu.contains(event.target) && !trigger.contains(event.target)) {
                 menu.classList.remove('active-menu');

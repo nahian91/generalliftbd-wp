@@ -46,12 +46,47 @@
 </div>
 
             <div class="glt-footer-col">
-                <h4 class="glt-col-title">Head Office</h4>
+                <h4 class="glt-col-title">Contact Us</h4>
                 <address class="glt-address">
                     <p><i class="fa-solid fa-location-dot"></i> NS Tower, House No-21, Block-J, Gate-4, EXT. Pallabi, Mirpur, Dhaka.</p>
-                    <p><i class="fa-solid fa-phone"></i> 01621-222255</p>
+                    <p><i class="fa-solid fa-location-dot"></i> House No-03, Road No-42, Block-C, ABC Point, Shahjalal Upashahar, Sylhet.</p>
+                    <p><i class="fa-solid fa-phone"></i> 01621-222255 [Hotline Number]</p>
+                    <p><i class="fa-solid fa-phone"></i> 01726-218583 [CEO Number]</p>
+                    <p><i class="fa-solid fa-phone"></i> 01712-256270 [Director Number]</p>
                     <p><i class="fa-solid fa-envelope"></i> generallifttechnology@gmail.com</p>
                 </address>
+                <br>
+                <div class="glt-social-minimal">
+                    <h4 class="glt-col-title">Social</h4>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/generallifttech" target="_blank" rel="noopener">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+
+                        <a href="https://youtube.com/@generallifttechnology7321" target="_blank" rel="noopener">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="glt-contact-grid-2">
+            
+            <div class="glt-contact-info-column">
+
+                <div class="glt-contact-methods">
+
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d203.51415999938854!2d90.3606486!3d23.7909669!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c187bcee31b9%3A0x7f1a8c791c9d3d05!2sNS%20TOWER!5e1!3m2!1sen!2sbd!4v1773167843531!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+
+            <div class="glt-contact-info-column">
+
+                <div class="glt-contact-methods">
+
+                    <iframe src="https://www.google.com/maps/embed?pb=!4v1773167890725!6m8!1m7!1sjInvOQFpN0IagZCtPL8wFA!2m2!1d24.88806144061236!2d91.89025542951728!3f267.66!4f-22.11!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
         </div>
 

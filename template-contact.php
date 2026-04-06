@@ -48,8 +48,16 @@ get_header(); ?>
                     <div class="glt-method-card">
                         <div class="glt-method-icon"><i class="fa-solid fa-phone-volume"></i></div>
                         <div class="glt-method-text">
-                            <label>Phone</label>
-                            <p>01726-218583 [CEO Number] <br/> 01712-256270 [Director Number] <br/> 01621-222255 [Hotline Number] </p>
+                            <label>CEO Number</label>
+                            <p>01726-218583</p>
+                        </div>
+                    </div>
+
+                    <div class="glt-method-card">
+                        <div class="glt-method-icon"><i class="fa-solid fa-phone-volume"></i></div>
+                        <div class="glt-method-text">
+                            <label>Director Number</label>
+                            <p>01712-256270</p>
                         </div>
                     </div>
 
@@ -68,8 +76,6 @@ get_header(); ?>
                             <p>generallifttechnology@gmail.com</p>
                         </div>
                     </div>
-
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d203.51415999938854!2d90.3606486!3d23.7909669!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c187bcee31b9%3A0x7f1a8c791c9d3d05!2sNS%20TOWER!5e1!3m2!1sen!2sbd!4v1773167843531!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
 
@@ -92,8 +98,16 @@ get_header(); ?>
                     <div class="glt-method-card">
                         <div class="glt-method-icon"><i class="fa-solid fa-phone-volume"></i></div>
                         <div class="glt-method-text">
-                            <label>Phone</label>
-                            <p>01726-218583 [CEO Number] <br/> 01712-256270 [Director Number] <br/> 01621-222255 [Hotline Number] </p>
+                            <label>CEO Number</label>
+                            <p>01726-218583</p>
+                        </div>
+                    </div>
+
+                    <div class="glt-method-card">
+                        <div class="glt-method-icon"><i class="fa-solid fa-phone-volume"></i></div>
+                        <div class="glt-method-text">
+                            <label>Director Number</label>
+                            <p>01712-256270</p>
                         </div>
                     </div>
 
@@ -112,8 +126,6 @@ get_header(); ?>
                             <p>generallifttechnology@gmail.com</p>
                         </div>
                     </div>
-
-                    <iframe src="https://www.google.com/maps/embed?pb=!4v1773167890725!6m8!1m7!1sjInvOQFpN0IagZCtPL8wFA!2m2!1d24.88806144061236!2d91.89025542951728!3f267.66!4f-22.11!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>

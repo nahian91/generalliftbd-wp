@@ -116,9 +116,8 @@ get_header(); ?>
     }
 
     .glt-leader-avatar {
-        width: 160px;
-        height: 160px;
-        border-radius: 50%;
+        width: 200px;
+        height: 300px;
         margin-bottom: 25px;
         padding: 8px;
         border: 1px solid var(--glt-border-color);
@@ -128,7 +127,6 @@ get_header(); ?>
     .glt-leader-avatar img {
         width: 100%;
         height: 100%;
-        border-radius: 50%;
         object-fit: cover;
         filter: grayscale(20%);
     }
@@ -206,43 +204,132 @@ get_header(); ?>
 
 <section class="glt-leadership-module">
     <div class="glt-container">
-        
         <div class="glt-leader-grid">
-            <div class="glt-leader-card">
-            <div class="glt-profile-side">
-                <div class="glt-leader-avatar">
-                    <img src="<?php echo get_template_directory_uri();?>/assets/img/about-1.jpg" alt="Chairman">
-                </div>
-                <h3 class="glt-leader-name">MD LIMON</h3>
-                <span class="glt-leader-desig">CEO</span>
-            </div>
             
-            <div class="glt-message-side">
-                <p class="glt-msg-body">
-                    It is my privilege to welcome you to General Lift Technology. Since our inception, we have endeavored to impart internationally standard engineering solutions at an affordable cost. Our mission is attributed to the production of competent technical manpower so as to expedite the collective development of our infrastructure. We prioritize safety and precision above all else.
-                </p>
-            </div>
-        </div>
-
-        <div class="glt-leader-card">
-            <div class="glt-profile-side">
-                <div class="glt-leader-avatar">
-                    <img src="<?php echo get_template_directory_uri();?>/assets/img/about-2.jpg" alt="MD">
+            <div class="glt-leader-card glt-reveal" data-anim="fade-left">
+                <div class="glt-profile-side">
+                    <div class="glt-leader-avatar">
+                        <img src="<?php echo get_template_directory_uri();?>/assets/img/ceo.png" alt="Chairman">
+                    </div>
+                    <h3 class="glt-leader-name">MD LIMON</h3>
+                    <span class="glt-leader-desig">CEO</span>
                 </div>
-                <h3 class="glt-leader-name">SYED MUNJURE KHUDA</h3>
-                <span class="glt-leader-desig">DIRECTOR</span>
+                
+                <div class="glt-message-side">
+                    <p class="glt-msg-body">
+                        It is my privilege to welcome you to General Lift Technology. Since our inception, we have endeavored to impart internationally standard engineering solutions at an affordable cost. Our mission is attributed to the production of competent technical manpower so as to expedite the collective development of our infrastructure. We prioritize safety and precision above all else.
+                    </p>
+                </div>
             </div>
-            
-            <div class="glt-message-side">
-                <p class="glt-msg-body">
-                    Our vision is to produce professionally competent and accomplished systems that encounter any challenge in the architectural field. We focus on inspired intellect, high morals, and social responsibility. GLT addresses the multidimensional requirements of the modern job market through smooth innovation and rigorous safety standards.
-                </p>
-            </div>
-        </div>                    
-        </div>
 
+            <div class="glt-leader-card glt-reveal" data-anim="fade-right">
+                <div class="glt-profile-side">
+                    <div class="glt-leader-avatar">
+                        <img src="<?php echo get_template_directory_uri();?>/assets/img/director.png" alt="MD">
+                    </div>
+                    <h3 class="glt-leader-name">SYED MUNJURE KHUDA</h3>
+                    <span class="glt-leader-desig">DIRECTOR</span>
+                </div>
+                
+                <div class="glt-message-side">
+                    <p class="glt-msg-body">
+                        Our vision is to produce professionally competent and accomplished systems that encounter any challenge in the architectural field. We focus on inspired intellect, high morals, and social responsibility. GLT addresses the multidimensional requirements of the modern job market through smooth innovation and rigorous safety standards.
+                    </p>
+                </div>
+            </div>                    
+        </div>
     </div>
 </section>
+
+<style>
+/* Initial hidden state */
+.glt-reveal {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1); /* Smoother "Power" ease */
+    will-change: transform, opacity;
+}
+
+/* Animation Classes */
+.glt-active.fade-left {
+    animation: gltFadeInLeft 1.2s forwards;
+}
+
+.glt-active.fade-right {
+    animation: gltFadeInRight 1.2s forwards;
+}
+
+/* Increased travel distance (200px) */
+@keyframes gltFadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-200px);
+        visibility: hidden;
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        visibility: visible;
+    }
+}
+
+@keyframes gltFadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(200px);
+        visibility: hidden;
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        visibility: visible;
+    }
+}
+
+/* Important: Prevents horizontal scrollbar during animation */
+.glt-leadership-module {
+    overflow-x: hidden;
+    padding: 100px 0; /* Extra padding so they don't feel cramped */
+}
+</style>
+
+<script>
+(function() {
+    document.addEventListener('DOMContentLoaded', function() {
+        const revealItems = document.querySelectorAll('.glt-reveal');
+        
+        if (revealItems.length === 0) return;
+
+        const observerOptions = {
+            // 0.3 = 30% of the element must be in view before triggering
+            threshold: 0.3,
+            // rootMargin adds a "buffer". 
+            // "0px 0px -50px 0px" means it triggers 50px after entering the bottom
+            rootMargin: "0px 0px -50px 0px" 
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const animationType = entry.target.getAttribute('data-anim');
+                    
+                    entry.target.classList.add('glt-active');
+                    if (animationType) {
+                        entry.target.classList.add(animationType);
+                    }
+                    
+                    // Unobserve so it only happens once
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        revealItems.forEach(item => {
+            revealObserver.observe(item);
+        });
+    });
+})();
+</script>
 
 <section id="services" class="glt-services glt-section glt-bg-slate">
     <div class="glt-container">
@@ -610,79 +697,77 @@ get_header(); ?>
     </div>
 </section>
 
-<section id="blog" class="glt-blog glt-section glt-bg-alt">
+<section id="video-showcase" class="glt-video-section glt-section glt-bg-alt">
     <div class="glt-container">
 
         <div class="glt-center-header">
-            <span class="glt-upper-title">Executive Blogs</span>
-            <h2 class="glt-section-title">The <span class="glt-text-blue">Exclusive</span> Blogs</h2>
+            <span class="glt-upper-title">Video Gallery</span>
+            <h2 class="glt-section-title">Latest <span class="glt-text-blue">Featured</span> Videos</h2>
             <div class="glt-header-line"></div>
         </div>
 
         <div class="glt-grid-3">
             <?php
-            // WP_Query to fetch latest 3 blog posts
-            $blog_args = array(
-                'post_type'      => 'post',
-                'posts_per_page' => 3,
-                'ignore_sticky_posts' => true,
-            );
+            $videos = [
+                ['id' => 'ScMzIvxBSi4', 'title' => 'Mastering Modern UI/UX Trends'],
+                ['id' => 'dQw4w9WgXcQ', 'title' => 'The Future of WordPress Development'],
+                ['id' => 'ScMzIvxBSi4', 'title' => 'Optimizing SaaS Admin Dashboards'],
+            ];
 
-            $blog_query = new WP_Query($blog_args);
-
-            if ($blog_query->have_posts()) :
-                while ($blog_query->have_posts()) : $blog_query->the_post(); 
-                    
-                    // Logic for Category Tag
-                    $categories = get_the_category();
-                    $category_name = !empty($categories) ? $categories[0]->name : 'Uncategorized';
-                    $category_slug = !empty($categories) ? $categories[0]->slug : 'general';
-                    
-                    // Logic for Read Time (Simple estimation: 200 words per minute)
-                    $content = get_post_field('post_content', get_the_ID());
-                    $word_count = str_word_count(strip_tags($content));
-                    $reading_time = ceil($word_count / 200);
-                    $reading_time = ($reading_time < 1) ? 1 : $reading_time;
-                ?>
-
-                <article class="glt-blog-card-pro">
-                    <div class="glt-blog-image-pro">
-                        <?php if (has_post_thumbnail()) : ?>
-                            <?php the_post_thumbnail('large', ['alt' => get_the_title()]); ?>
-                        <?php else : ?>
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/default-blog.jpg" alt="<?php the_title(); ?>">
-                        <?php endif; ?>
-                        
-                        <span class="glt-category-tag-pro glt-tag-<?php echo esc_attr($category_slug); ?>">
-                            <?php echo esc_html($category_name); ?>
-                        </span>
+            foreach ($videos as $video) : ?>
+                <div class="glt-video-item">
+                    <div class="glt-video-iframe-wrap">
+                        <iframe 
+                            src="https://www.youtube.com/embed/<?php echo esc_attr($video['id']); ?>" 
+                            title="<?php echo esc_attr($video['title']); ?>" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe>
                     </div>
-
-                    <div class="glt-blog-body-pro">
-                        <div class="glt-blog-meta-pro">
-                            <span><i class="fa-regular fa-calendar"></i> <?php echo get_the_date(); ?></span>
-                            <span><i class="fa-solid fa-hourglass-half"></i> <?php echo $reading_time; ?> MIN READ</span>
-                        </div>
-                        
-                        <h3><?php the_title(); ?></h3>
-                        
-                        <p><?php echo wp_trim_words(get_the_excerpt(), 15, '...'); ?></p>
-                        
-                        <a href="<?php the_permalink(); ?>" class="glt-link-action">
-                            Read Full Article <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </article>
-
-                <?php
-                endwhile;
-                wp_reset_postdata();
-            else :
-                echo '<p>No blog posts found.</p>';
-            endif;
-            ?>
+                    <h3 class="glt-video-title"><?php echo esc_html($video['title']); ?></h3>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
+
+<style>
+    .glt-video-item {
+        margin-bottom: 30px;
+    }
+    
+    .glt-video-iframe-wrap {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        height: 0;
+        overflow: hidden;
+        border-radius: 12px;
+        background: #000;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        margin-bottom: 15px;
+    }
+
+    .glt-video-iframe-wrap iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .glt-video-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #1e293b;
+        line-height: 1.4;
+        margin: 0;
+        transition: color 0.3s ease;
+    }
+
+    .glt-video-item:hover .glt-video-title {
+        color: #4f46e5;
+    }
+</style>
 
 <?php get_footer(); ?>
