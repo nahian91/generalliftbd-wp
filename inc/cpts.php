@@ -28,7 +28,7 @@ function glt_register_all_cpt_features() {
         'has_archive'        => false,
         'menu_icon'          => 'dashicons-cart',
         'menu_position'      => 5,
-        'supports'           => ['title', 'thumbnail'],
+        'supports'           => ['title', 'thumbnail', 'page-attributes'],
         'show_in_rest'       => true,
         'rewrite'            => ['slug' => 'products'],
     ]);
