@@ -2068,7 +2068,6 @@ a { text-decoration: none; color: inherit; transition: var(--glt-transition); }
     position: relative;
     padding: 100px 0;
     background-color: #0f172a; /* Deep Navy */
-    background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

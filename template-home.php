@@ -399,7 +399,7 @@ get_header(); ?>
     </div>
 </section>
 
-<section class="glt-cta-industrial">
+<section class="glt-cta-industrial" style="background-image: url(<?php echo get_template_directory_uri();?>/assets/img/cta.jpg);">
     <div class="glt-cta-overlay"></div>
     <div class="glt-blueprint-grid"></div>
     
