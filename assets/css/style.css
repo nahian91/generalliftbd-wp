@@ -3546,6 +3546,7 @@ a { text-decoration: none; color: inherit; transition: var(--glt-transition); }
 @media only screen and (max-width: 767px) {
     .glt-hero-slide {
         padding: 0;
+        height: 560px !important;
     }
 }
 .glt-hero-slide:before {
@@ -3565,8 +3566,8 @@ a { text-decoration: none; color: inherit; transition: var(--glt-transition); }
         flex-direction: column;
     }
     .glt-hero-h1 {
-        font-size: 40px;
-        line-height: 50px;
+        font-size: 35px;
+        line-height: 40px;
         font-weight: 800;
     }
     .glt-logo img {
