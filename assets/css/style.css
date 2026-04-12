@@ -2070,7 +2070,6 @@ a { text-decoration: none; color: inherit; transition: var(--glt-transition); }
     background-color: #0f172a; /* Deep Navy */
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
     color: #ffffff;
     overflow: hidden;
 }
@@ -2078,7 +2077,7 @@ a { text-decoration: none; color: inherit; transition: var(--glt-transition); }
 .glt-cta-overlay {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.8) 100%);
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.5) 100%);
     z-index: 1;
 }
 
@@ -2205,6 +2204,8 @@ a { text-decoration: none; color: inherit; transition: var(--glt-transition); }
     }
     .glt-cta-features {
         justify-content: center;
+        flex-direction: column;
+        align-items: center;
     }
 }
 
@@ -3541,6 +3542,11 @@ a { text-decoration: none; color: inherit; transition: var(--glt-transition); }
   padding: 80px 0;
   position: relative;
   z-index: 2;
+}
+@media only screen and (max-width: 767px) {
+    .glt-hero-slide {
+        padding: 0;
+    }
 }
 .glt-hero-slide:before {
   position: absolute;
